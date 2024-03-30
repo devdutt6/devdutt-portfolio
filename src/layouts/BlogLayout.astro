@@ -1,0 +1,73 @@
+---
+import type { MarkdownLayoutProps } from "astro";
+import LogoHeader from "../components/header/LogoHeader.astro";
+import FixedHeight from "../components/header/FixedHeight.astro";
+
+type Props = MarkdownLayoutProps<{
+  title: string;
+  og_title: string;
+  og_description: string;
+  og_image: string;
+  og_type: string;
+  og_author: string;
+  og_publishedOn: string;
+}>;
+
+const { frontmatter, url } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <title>{frontmatter.title || "Devdutt/Blog"}</title>
+    <meta property='og:title' content={frontmatter.og_title} />
+    <meta property='og:description' content={frontmatter.og_description} />
+    <meta property='og:url' content={url} />
+    <meta property='og:image' content={frontmatter.og_image} />
+    <meta property='og:type' content={frontmatter.og_type} />
+    <meta property='og:author' content={frontmatter.og_author} />
+    <meta property='og:published_time' content={frontmatter.og_publishedOn} />
+    <meta property='twitter:card' content='summary_large_image' />
+    <meta
+      property='
+      article:published_time'
+      content={frontmatter.og_publishedOn}
+    />
+    <style>
+      * {
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #555;
+        }
+      }
+    </style>
+  </head>
+  <body class='bg-slate-900'>
+    <LogoHeader />
+    <FixedHeight color='bg-slate-900' />
+    <FixedHeight color='bg-slate-900' />
+    <FixedHeight color='bg-neutral-900' />
+
+    <div class='bg-neutral-900'>
+      <article class='prose md:prose-lg prose-invert mx-auto'>
+        <slot />
+      </article>
+    </div>
+  </body>
+</html>

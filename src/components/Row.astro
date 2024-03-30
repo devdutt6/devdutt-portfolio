@@ -1,0 +1,64 @@
+---
+interface Props {
+  justification: "justify-start" | "justify-end";
+  image: string;
+  position: string;
+}
+const { justification, image, position } = Astro.props;
+---
+
+<div class=`flex ${justification} items-center gap-8`>
+  <div class='w-[200px] h-[200px] overflow-hidden'>
+    <img
+      src={image}
+      alt={"Image"}
+      class='object-none rounded-lg'
+      style={{ objectPosition: "50% 50%" }}
+    />
+  </div>
+  <section class=''>
+    <h3 class='text-2xl text-white'>Some Text</h3>
+    <p class='text-lg text-white'>Here goes some little description</p>
+  </section>
+</div>
+
+<!-- <main
+      class='grid grid-cols-2 gap-96 h-[100vh] w-full overflow-y-scroll bg-black'
+      id='parent'
+    >
+      <Row position='50% 0%' image='/m3.png' justification='justify-start' />
+      <Row position='50% 50%' image='/m3.png' justification='justify-start' />
+      <Row position='10% 10%' image='/m3.png' justification='justify-start' />
+      <Row position='40% 40%' image='/m3.png' justification='justify-start' />
+      <Row position='0% 50%' image='/m3.png' justification='justify-start' />
+      <Row position='0% 10%' image='/m3.png' justification='justify-start' />
+      <Row position='0% 30%' image='/m3.png' justification='justify-start' />
+      <Row position='100% 100%' image='/m3.png' justification='justify-start' />
+      <Row position='10% 80%' image='/m3.png' justification='justify-start' />
+      <Row position='80% 10%' image='/m3.png' justification='justify-start' />
+      <Row position='0% 50%' image='/m3.png' justification='justify-start' />
+      <Row position='0% 10%' image='/m3.png' justification='justify-start' />
+      <Row position='0% 30%' image='/m3.png' justification='justify-start' />
+      <Row position='100% 100%' image='/m3.png' justification='justify-start' />
+      <Row position='10% 80%' image='/m3.png' justification='justify-start' />
+      <Row position='80% 10%' image='/m3.png' justification='justify-start' />
+    </main> -->
+<!-- <script>
+  // let linear = 0.6;
+  let zoom = 0.005;
+  function handleMove(ele: any) {
+    const rec = ele?.getBoundingClientRect();
+    if (rec.bottom > 0 && rec.top < innerHeight) {
+      const xmid = rec.top + rec.height / 2;
+      let perc = Math.floor((xmid / innerHeight) * 100);
+      // ele.style.objectPosition = `50% ${perc * linear + 20}%`;
+      ele.style.scale = `${perc * zoom + 0.9}`;
+    }
+  }
+  const innerHeight = window.innerHeight;
+
+  const imgs = document.querySelectorAll("img");
+  const scrollHandle = () => imgs.forEach(handleMove);
+  const parent = document.querySelector("#parent");
+  parent?.addEventListener("scroll", scrollHandle);
+</script> -->

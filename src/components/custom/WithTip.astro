@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<div class='relative max-w-fit group'>
+  <div
+    class='absolute hidden group-hover:block min-w-fit text-nowrap px-2 rounded-full bg-zinc-500 -top-[50%] left-[60%] cursor-pointer text-sm after:content-["↗"]'
+  >
+    {title}
+  </div>
+  <slot />
+</div>

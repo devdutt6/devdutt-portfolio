@@ -1,0 +1,36 @@
+---
+layout: "../layouts/BlogLayout.astro"
+title: "Tailwind | Devdutt"
+og_title: Tailwind Learnings
+og_description: The tailwind is a utility framework for writting css. 
+og_image: https://ntwc-us-east-2-lab-eks-s3-files-storage.s3.us-east-2.amazonaws.com/user-656842edcffc99001340a41c//file_1711619418257_aa.jpg
+# og_image: https://wrmqwq1z-4321.inc1.devtunnels.ms/tailwind.png
+og_type: article
+og_author: devdutt
+og_publishedOn: 29-03-2024
+---
+import Blockquote from '../components/customMdx/BlockQuote.astro';
+import Code from '../components/customMdx/Code.astro';
+import WithTip from '../components/custom/WithTip.astro';
+export const components = {li: WithTip, blockquote: Blockquote}
+
+# Tailwind 
+
+This is the normal para
+
+## head 2
+
+- item 1
+- item 2
+
+**Bold** *italics* ~underline~ [link](https://google.com)
+
+> blockquote
+
+
+```js
+const name = "Dev"
+function named() {
+  return name + "post"
+}
+```
