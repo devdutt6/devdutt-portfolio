@@ -1,0 +1,15 @@
+---
+const posts = await Astro.glob("../../content/*.mdx");
+---
+
+<ul>
+  {
+    posts.map((post) => (
+      <li>
+        <a href={`/blogs/${post.getHeadings()[0].slug}`}>
+          {post.frontmatter.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
