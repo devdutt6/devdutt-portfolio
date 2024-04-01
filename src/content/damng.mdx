@@ -12,7 +12,8 @@ og_publishedOn: 29-03-2024
 import Blockquote from '../components/customMdx/BlockQuote.astro';
 import Code from '../components/customMdx/Code.astro';
 import WithTip from '../components/custom/WithTip.astro';
-export const components = {li: WithTip, blockquote: Blockquote}
+import Anchor from '../components/customMdx/Anchor.astro';
+export const components = {li: WithTip, blockquote: Blockquote, a: Anchor}
 
 # Tailwind 
 
@@ -21,7 +22,7 @@ This is the normal para
 ## head 2
 
 - item 1
-- item 2
+- item 2  
 
 **Bold** *italics* ~underline~ [link](https://google.com)
 
