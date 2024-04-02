@@ -1,23 +1,8 @@
 ---
-interface Frontmatter {
-  title?: string;
-}
-interface Props {
-  title: string;
-  frontmatter: Frontmatter;
-}
-
-const props = Astro.props;
+import LogoHeader from "../components/header/LogoHeader.astro";
 ---
 
-<!doctype html>
-<html lang='en'>
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='description' content='Astro description' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <title>{props?.title || "title"}</title>
-  </head>
-  <body class='bg-slate-900'><slot /></body>
-</html>
+<body class='bg-slate-800'>
+  <LogoHeader />
+  <slot />
+</body>

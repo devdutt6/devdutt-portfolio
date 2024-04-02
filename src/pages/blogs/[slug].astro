@@ -1,7 +1,7 @@
 ---
 import type { MDXInstance } from "astro";
 import FixedHeight from "../../components/header/FixedHeight.astro";
-import LogoHeader from "../../components/header/LogoHeader.astro";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths(): Promise<any> {
   const posts = await Astro.glob("../../content/*.mdx");
@@ -65,10 +65,9 @@ const { Content, frontmatter, url } = Astro.props.post;
       }
     </style>
   </head>
-  <body class='bg-slate-900'>
-    <LogoHeader />
-    <FixedHeight color='bg-slate-900' />
-    <FixedHeight color='bg-slate-900' />
+  <Layout>
+    <FixedHeight color='bg-slate-800' />
+    <FixedHeight color='bg-slate-800' />
     <FixedHeight color='bg-neutral-900' />
 
     <div class='bg-neutral-900'>
@@ -78,5 +77,7 @@ const { Content, frontmatter, url } = Astro.props.post;
         <Content />
       </article>
     </div>
-  </body>
+  </Layout>
+
+
 </html>

@@ -1,15 +1,36 @@
 ---
+import FixedHeight from "../../components/header/FixedHeight.astro";
+import Layout from "../../layouts/Layout.astro";
+
 const posts = await Astro.glob("../../content/*.mdx");
 ---
 
-<ul>
-  {
-    posts.map((post) => (
-      <li>
-        <a href={`/blogs/${post.getHeadings()[0].slug}`}>
-          {post.frontmatter.title}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<Layout>
+  <FixedHeight color='bg-slate-800' />
+
+  <main class='mx-auto max-w-3xl container space-y-4 mt-4'>
+    {
+      posts.map((post) => (
+        <div class='relative rounded-lg group'>
+          <div class='absolute scale-[1.020] invisible group-hover:scale-100 group-hover:visible transform transition-transform duration-150 h-full inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 blur-sm z-0 group-hover:-translate-y-2' />
+          <div class='bg-zinc-900 text-white px-8 py-4 h-full relative rounded-lg transform group-hover:-translate-y-2'>
+            <h1 class='bg-gradient-to-br from-fuchsia-600 cursor-pointer to-cyan-500 bg-clip-text text-4xl font-semibold text-transparent w-fit tracking-wide p-1'>
+              <a href={`/blogs/${post.getHeadings()[0].slug}`}>
+                {post.frontmatter.title}
+              </a>
+            </h1>
+            <ul class='flex gap-2 mt-3 mb-5'>
+              {post.frontmatter.tags &&
+                post.frontmatter.tags.map((tag: string) => (
+                  <li class='px-2 bg-white/40 rounded-lg'>{tag}</li>
+                ))}
+            </ul>
+            <p class='text-lg tracking-wide'>
+              {post.frontmatter.og_description}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </main>
+</Layout>
