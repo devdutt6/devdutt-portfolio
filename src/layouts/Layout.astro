@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import LogoHeader from "../components/header/LogoHeader.astro";
+import Footer from "../components/footer.astro";
 ---
 
 <head>
@@ -10,4 +11,5 @@ import LogoHeader from "../components/header/LogoHeader.astro";
 <body class='bg-slate-800'>
   <LogoHeader />
   <slot />
+  <Footer />
 </body>
