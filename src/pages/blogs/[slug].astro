@@ -2,6 +2,7 @@
 import type { MDXInstance } from "astro";
 import FixedHeight from "../../components/header/FixedHeight.astro";
 import Layout from "../../layouts/Layout.astro";
+import { ViewTransitions } from "astro:transitions";
 
 export async function getStaticPaths(): Promise<any> {
   const posts = await Astro.glob("../../content/*.mdx");
@@ -26,6 +27,7 @@ const { Content, frontmatter, url } = Astro.props.post;
 <!doctype html>
 <html lang='en'>
   <head>
+    <ViewTransitions />
     <meta charset='UTF-8' />
     <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
@@ -44,24 +46,19 @@ const { Content, frontmatter, url } = Astro.props.post;
       article:published_time'
       content={frontmatter.og_publishedOn}
     />
-    <style>
-      * {
-        ::-webkit-scrollbar {
-          width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background: #888;
-          border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-          background: #555;
-        }
+    <style is:global>
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
       }
     </style>
   </head>
@@ -72,7 +69,7 @@ const { Content, frontmatter, url } = Astro.props.post;
 
     <div class='bg-neutral-900'>
       <article
-        class='prose md:prose-lg prose-invert mx-auto prose-h2:text-yellow-400 prose-li:prose-ul:marker:text-yellow-400 prose-li:prose-ol:marker:text-blue-600 prose-code:select-all'
+        class='prose md:prose-lg prose-invert mx-auto prose-a:text-blue-600 prose-h2:text-yellow-400 prose-li:prose-ul:marker:text-yellow-400 prose-li:prose-ol:marker:text-blue-600 prose-code:select-all'
       >
         <Content />
       </article>
