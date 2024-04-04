@@ -1,6 +1,6 @@
 ---
 import type { MarkdownLayoutProps } from "astro";
-import FixedHeight from "../components/header/FixedHeight.astro";
+import FixedHeight from "../components/FixedHeight.astro";
 import Layout from "./Layout.astro";
 
 type Props = MarkdownLayoutProps<{
@@ -33,8 +33,7 @@ const { frontmatter, url } = Astro.props;
     <meta property='og:published_time' content={frontmatter.og_publishedOn} />
     <meta property='twitter:card' content='summary_large_image' />
     <meta
-      property='
-      article:published_time'
+      property='article:published_time'
       content={frontmatter.og_publishedOn}
     />
   </head>

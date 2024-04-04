@@ -8,7 +8,8 @@ import ShareButton from "../SocialButton/ShareButton.astro";
   </h1>
   <ShareButton />
   <script>
-    document.querySelector("#share")?.addEventListener("click", (e) => {
+    // copy the link to blog
+    document.querySelector("#share")?.addEventListener("click", (_) => {
       let url = window.location.href;
       navigator.clipboard.writeText(url);
     });
