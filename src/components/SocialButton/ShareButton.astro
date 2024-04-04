@@ -1,0 +1,42 @@
+---
+import shareButton from "./share.svg";
+---
+
+<div class='group relative h-10 mt-1 rounded-lg'>
+  <div
+    class='group-active:invisible blur-sm bg-gradient-to-r from-fuchsia-600 to-cyan-500 group-hover:scale-x-100 absolute inset-0 h-full transition-transform transform scale-x-0 rounded-lg'
+  >
+  </div>
+  <button
+    class='bg-zinc-900 relative flex items-center justify-center h-full px-2 rounded-lg outline-none'
+    id='share'
+  >
+    <img
+      src={shareButton.src}
+      alt='share icon'
+      width='24'
+      height='24'
+      class='inline'
+      style={{ margin: 0 }}
+    />&nbsp;I&nbsp;Share
+  </button>
+</div>
+
+<!-- 
+  class='bg-clip-border hover:bg-gradient-to-r from-fuchsia-600 to-cyan-500 relative h-10 border-2 border-transparent rounded-lg'
+>
+  <div class='bg-zinc-800 absolute inset-0 top-0 left-0 rounded-lg'></div>
+  <button
+    class='active:bg-gradient-to-r from-cyan-600 to-fuchsia-500 relative flex items-center justify-center h-full px-2 align-top rounded-lg outline-none'
+  >
+    <img
+      src={shareButton.src}
+      alt='share icon'
+      width='24'
+      height='24'
+      class='inline'
+      style={{ margin: 0 }}
+    />&nbsp;&nbsp;Share
+  </button>
+</div>
+ -->

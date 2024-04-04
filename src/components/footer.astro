@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import Social from "./Social.astro";
+---
+
+<footer
+  class='text-md px-14 flex items-center justify-between py-4 tracking-widest text-white'
+>
+<Social link='/'>
+  <Image src='/logo.svg' alt='home icon' width={30} height={30} />
+</Social>
+  <p class='leading-none cursor-default'>Made with &#10084; by devdutt</p>
+  <div class='shrink-0 flex gap-2'>
+    <Social link='https://github.com/devdutt6'>
+      <Image src='/logo.svg' alt='github icon' width={30} height={30} />
+    </Social>
+    <Social link='https://linkedin.com/devduttsinh'>
+      <Image src='/logo.svg' alt='github icon' width={30} height={30} />
+    </Social>
+    <Social link='mailto:devduttchudasama1339@gmail.com'>
+      <Image src='/logo.svg' alt='github icon' width={30} height={30} />
+    </Social>
+  </div>
+</footer>
