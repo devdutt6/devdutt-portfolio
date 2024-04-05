@@ -1,0 +1,116 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const listStyles = "hover:bg-red-300 odd:bg-gray-800 hover:text-black";
+const ulStyles = "p-4 w-full m-0 text-center";
+const header = "text-3xl font-bold text-yellow-500 mt-16";
+---
+
+<Layout>
+  <div
+    class='flex flex-col space-y-4 px-16 items-center justify-between text-white text-lg'
+  >
+    <h2 class='text-3xl font-bold text-yellow-500 mt-16'>personal projects</h2>
+    <ul class='p-4 w-full m-0 text-center'>
+      <li class='hover:bg-red-300 odd:bg-gray-800 hover:text-black'>
+        kathanak
+      </li>
+      <li class={listStyles}>discord bot</li>
+      <li class={listStyles}>npm lib: advent of code</li>
+      <li class={listStyles}>terminal portfolio</li>
+      <li class={listStyles}>this website</li>
+    </ul>
+
+    <h2 class={header}>company projects highlights</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>trocko</li>
+      <li class={listStyles}>miho</li>
+      <li class={listStyles}>Web3 sisu</li>
+      <li class={listStyles}>Fynd's Cred extention</li>
+      <li class={listStyles}>networked</li>
+      <li class={listStyles}>vidola</li>
+    </ul>
+
+    <h2 class={header}>laguages</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>Javascript/typescript</li>
+      <li class={listStyles}>go</li>
+      <li class={listStyles}>rust</li>
+      <li class={listStyles}>python</li>
+      <li class={listStyles}>php</li>
+      <li class={listStyles}>CPP</li>
+    </ul>
+
+    <h2 class={header}>backend</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>nodejs</li>
+      <li class={listStyles}>REST</li>
+      <li class={listStyles}>GRAPHQL</li>
+      <li class={listStyles}>sockets</li>
+      <li class={listStyles}>nestjs</li>
+      <li class={listStyles}>event based architecture</li>
+      <li class={listStyles}>microservices architecture with submodules</li>
+    </ul>
+
+    <h2 class={header}>databases</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>Mongodb</li>
+      <li class={listStyles}>postgresql</li>
+      <li class={listStyles}>redis</li>
+    </ul>
+
+    <h2 class={header}>frontend</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>react</li>
+      <li class={listStyles}>nextjs</li>
+      <li class={listStyles}>astro</li>
+      <li class={listStyles}>svelte</li>
+    </ul>
+
+    <h2 class={header}>cloud services</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>ec2</li>
+      <li class={listStyles}>s3</li>
+      <li class={listStyles}>sqs</li>
+      <li class={listStyles}>lambda</li>
+    </ul>
+
+    <h2 class={header}>Message passing and queueing</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>kafka</li>
+      <li class={listStyles}>rabbitMQ</li>
+    </ul>
+
+    <h2 class={header}>web technologies</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>Tailwind</li>
+      <li class={listStyles}>CSS3</li>
+      <li class={listStyles}>HTML5</li>
+    </ul>
+
+    <h2 class={header}>other useful skills</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>problem solving</li>
+      <li class={listStyles}>3rd party api interetions</li>
+      <li class={listStyles}>debugging tools</li>
+      <li class={listStyles}>readable code</li>
+      <li class={listStyles}>SOLID</li>
+      <li class={listStyles}>OOP</li>
+      <li class={listStyles}>docker</li>
+      <li class={listStyles}>version control</li>
+    </ul>
+
+    <h2 class={header}>testing</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>jest</li>
+      <li class={listStyles}>postman</li>
+    </ul>
+
+    <h2 class={header}>documentation</h2>
+    <ul class={ulStyles}>
+      <li class={listStyles}>swagger</li>
+      <li class={listStyles}>jsdoc</li>
+      <li class={listStyles}>postman</li>
+    </ul>
+  </div>
+</Layout>
