@@ -1,26 +1,17 @@
 ---
+import { getCollection } from "astro:content";
 import BlogCard from "../../components/BlogCard/BlogCard.astro";
 import FixedHeight from "../../components/FixedHeight.astro";
 import Layout from "../../layouts/Layout.astro";
 
-const posts = await Astro.glob("../../content/*.mdx");
+const blogPosts = await getCollection("blog");
 ---
 
 <Layout>
   <FixedHeight color='bg-slate-800' />
 
   <main class='container max-w-3xl mx-auto mt-4 space-y-4'>
-    {
-      posts.map((post) => (
-        <BlogCard
-          title={post.frontmatter.title}
-          slug={`/blogs/${post.getHeadings()[0].slug}`}
-          tags={post.frontmatter.tags}
-          og_publishedOn={post.frontmatter.og_publishedOn}
-          og_description={post.frontmatter.og_description}
-        />
-      ))
-    }
+    {blogPosts.map((post) => <BlogCard post={post} />)}
   </main>
 
   <FixedHeight color='bg-slate-800' />

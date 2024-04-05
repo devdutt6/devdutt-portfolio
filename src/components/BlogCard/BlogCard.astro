@@ -1,19 +1,13 @@
 ---
-export type Props = {
-  title: string;
-  tags: [string];
-  og_publishedOn: string;
-  og_description: string;
-  slug: string;
-};
+import type { CollectionEntry } from "astro:content";
 
-const dateConfig: Intl.DateTimeFormatOptions = {
-  month: "short",
-  day: "2-digit",
-  year: "numeric",
-};
-const dateFormat = "en-US";
-const { title, tags, og_publishedOn, og_description, slug } = Astro.props;
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { slug, data } = post;
+const finalURL = `/blogs/${slug}`;
 ---
 
 <div class='group relative rounded-lg'>
@@ -27,24 +21,21 @@ const { title, tags, og_publishedOn, og_description, slug } = Astro.props;
     <h1
       class='bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text w-fit p-1 text-4xl font-semibold tracking-wide text-transparent cursor-pointer'
     >
-      <a href={slug}>{title}</a>
+      <a href={finalURL}>{data.title}</a>
     </h1>
     <ul class='flex gap-2 my-3'>
       {
-        tags &&
-          tags.map((tag) => <li class='bg-white/40 px-2 rounded-lg'>{tag}</li>)
+        data.tags &&
+          data.tags.map((tag) => (
+            <li class='bg-white/40 px-2 rounded-lg'>{tag}</li>
+          ))
       }
     </ul>
     <p class='mb-5 text-sm tracking-wide'>
-      Published On:&nbsp;{
-        new Date(og_publishedOn || Date.now()).toLocaleDateString(
-          dateFormat,
-          dateConfig
-        )
-      }
+      Published On:&nbsp;{data.og_publishedOn}
     </p>
     <p class='text-lg tracking-wide'>
-      {og_description}
+      {data.og_description}
     </p>
   </div>
 </div>
