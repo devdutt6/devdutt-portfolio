@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import Lister from '../../components/Lister.astro';
+
+interface Props {
+  categoryTitle: string;
+  values: string[];
+}
+
+const { categoryTitle: title, values } = Astro.props;
+const [id, parentId, roundedId, iconId, enlargeId] = [
+  title,
+  'parent' + title,
+  'rounded' + title,
+  'icon' + title,
+  'enlarge' + title,
+];
+const titlizeTitle = (title: string) => {
+  return title
+    .split('')
+    .map((a, i) => {
+      if (i == 0) return a.toUpperCase();
+      else if (a === '_' || a === '-') return ' ';
+      else return a.toLowerCase();
+    })
+    .join('');
+};
+---
+
+<div class='relative bg-transparent' id={parentId}>
+  <div
+    class='flex items-center transition-colors justify-between p-4 text-white bg-neutral-800 rounded-t-xl rounded-b-xl'
+    id={roundedId}
+  >
+    <p class='tracking-widest font-bold text-lg'>
+      {titlizeTitle(title)}
+    </p>
+    <div
+      class='flex transform transition-transform duration-700 -rotate-90'
+      id={iconId}
+    >
+      <Image src='/arrow.svg' height={24} width={24} alt='drop icon' />
+    </div>
+  </div>
+  <custom-component data-ider={id} data-close='true' class='bg-gray-400'
+  ></custom-component>
+  <div
+    id={enlargeId}
+    class='transition-all duration-700 transform hidden scale-y-0 origin-top bg-neutral-800 rounded-b-xl overflow-hidden'
+  >
+    <ul class='list-none px-4 pb-2 tracking-wider'>
+      {values.map((skill) => <Lister skill={skill} />)}
+    </ul>
+  </div>
+</div>
+
+<script>
+  class CustomComponent extends HTMLElement {
+    constructor() {
+      super();
+
+      const oId = this.dataset.ider;
+      const getElement = document.querySelector(`#parent${oId}`);
+      const enlargeIt = document.querySelector(`#enlarge${oId}`);
+      const removeRounded = document.querySelector(`#rounded${oId}`);
+      const rotateIt = document.querySelector(`#icon${oId}`);
+
+      getElement?.addEventListener('click', () => {
+        if (this.dataset.close === 'true') {
+          enlargeIt?.classList.remove('hidden');
+          enlargeIt?.classList.add('scale-y-100');
+          removeRounded?.classList.add('bg-gray-400');
+          removeRounded?.classList.remove('bg-neutral-800');
+          removeRounded?.classList.remove('text-white');
+          removeRounded?.classList.add('text-black');
+          removeRounded?.classList.remove('rounded-b-xl');
+          rotateIt?.classList.add('rotate-90');
+          this.setAttribute('data-close', 'false');
+        } else {
+          enlargeIt?.classList.add('hidden');
+          enlargeIt?.classList.remove('scale-y-100');
+          removeRounded?.classList.add('rounded-b-xl');
+          removeRounded?.classList.add('bg-neutral-800');
+          removeRounded?.classList.remove('bg-gray-400');
+          removeRounded?.classList.remove('text-black');
+          removeRounded?.classList.add('text-white');
+          rotateIt?.classList.remove('rotate-90');
+          this.setAttribute('data-close', 'true');
+        }
+      });
+    }
+  }
+  customElements.define('custom-component', CustomComponent);
+</script>

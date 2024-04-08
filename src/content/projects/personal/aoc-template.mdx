@@ -1,0 +1,54 @@
+import HoverUnder from '../../../components/HoverUnder.astro';
+import TagLook from '../../../components/TagLook.astro';
+
+# <HoverUnder color="border-yellow-400">AOC template</HoverUnder>
+
+**AOC** in AOCtemplate stand for [Advent of Code](https://adventofcode.com/) it is a website which hosts a coding hackathon at every year in the month of october. It starts on 1<sup>st</sup> of october and ends on 31<sup>st</sup>.
+
+During this 31 days each day you are provided with two problem statements and a large chunk of test data to run and test your solutions. After you are confident in your solution you have to make submission of your solution.
+
+<hr />
+## <HoverUnder color='border-yellow-400'>Story</HoverUnder>
+
+Now to participate in hackathon, You as a participant have to download the test file which has test cases, then copy it in some type of project folder. And then to check your solution with the test cases file, you have to write a file reader function providing the path to the test file, then read it, parse it. This task you will have to perform for 31 days just to start testing a solution.
+
+So to solve this repetative task I created this CLI tool and listed it on NPM [`aoctemplate`](https://www.npmjs.com/package/aoctemplate).
+
+With this CLI tool you can create your project folder and it will handel the file creation and reading of the data from the input file. So now as a participant you only have to think about the problem statement and its solution.
+
+## <HoverUnder color="border-yellow-400">About this package</HoverUnder>
+
+This tool comes with two commands <TagLook>aoc</TagLook> and other is <TagLook>aoc run</TagLook>.
+
+#### aoc
+
+<TagLook>aoc</TagLook> takes **\<folder_name\>** as argument and generates two files `input.txt` and `solution.js`.
+
+#### aoc run
+
+<TagLook>aoc run</TagLook> command takes **\<separator\>** as argument and reads the input file then will parse it and then will pass the parse data to your written solution.
+
+### <HoverUnder color="border-yellow-400">Dependency</HoverUnder>
+
+This package only has one dependency for coloring text on CLI.
+
+<hr />
+
+## <HoverUnder color="border-yellow-400">Learnings</HoverUnder>
+
+- Building CLI tool
+  - reading from CLI
+  - parsing arguments
+    - named
+    - unnamed (order wise)
+  - playing with Buffers and Data chunks
+  - command execution difference between windows and linux
+    - shell scripting in win and linux
+- Creating a NPM package
+  - what changes should being made to convert a normal project to NPM package
+  - how to write a attrative and readable MarkDown file.
+    <hr />
+
+#### Mentions
+
+Thanks [Heet](https://github.com/vakhariaheet) for the help with NPM package deployment.

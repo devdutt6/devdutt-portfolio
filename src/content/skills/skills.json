@@ -1,0 +1,29 @@
+{
+  "backend": [
+    "nodejs",
+    "REST",
+    "GraphQL",
+    "sockets",
+    "nestjs",
+    "event based architecture",
+    "microservices architecture with submodules"
+  ],
+  "frontend": ["react", "nextjs", "astro", "svelte"],
+  "cloud": ["ec2", "s3", "sqs", "lambda"],
+  "databases": ["mongo", "postgresql", "redis"],
+  "documentation": ["swagger", "jsdoc", "postman"],
+  "languages": ["Javascript/typescript", "go", "rust", "python", "php", "CPP"],
+  "testing": ["jest", "postman"],
+  "others_skills": [
+    "problem solving",
+    "3rd party api integrations",
+    "debugging tools",
+    "readable code",
+    "SOLID",
+    "OOP",
+    "docker",
+    "version control"
+  ],
+  "message_event_passing": ["kafka", "rabbitMQ"],
+  "web_technologies": ["Tailwind", "CSS3", "HTML5"]
+}

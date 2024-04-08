@@ -1,8 +1,8 @@
 ---
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
@@ -10,16 +10,16 @@ const { slug, data } = post;
 const finalURL = `/blogs/${slug}`;
 ---
 
-<div class='group relative rounded-lg'>
+<div class='relative rounded-lg group'>
   <div
     class='absolute scale-[1.020] invisible group-hover:scale-100 group-hover:visible transform transition-transform duration-150 h-full inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 blur-sm z-0 group-hover:-translate-y-2'
   >
   </div>
   <div
-    class='bg-zinc-900 group-hover:-translate-y-2 relative h-full p-8 px-8 text-white transform rounded-lg'
+    class='relative h-full p-8 px-8 text-white transform rounded-lg bg-zinc-900 group-hover:-translate-y-2'
   >
     <h1
-      class='bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text w-fit p-1 text-4xl font-semibold tracking-wide text-transparent cursor-pointer'
+      class='p-1 text-4xl font-bold tracking-wide text-transparent cursor-pointer bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text w-fit'
     >
       <a href={finalURL}>{data.title}</a>
     </h1>
@@ -27,7 +27,7 @@ const finalURL = `/blogs/${slug}`;
       {
         data.tags &&
           data.tags.map((tag) => (
-            <li class='bg-white/40 px-2 rounded-lg'>{tag}</li>
+            <li class='px-2 rounded-lg bg-white/40'>{tag}</li>
           ))
       }
     </ul>

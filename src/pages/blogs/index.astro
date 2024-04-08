@@ -1,16 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import BlogCard from "../../components/BlogCard/BlogCard.astro";
-import FixedHeight from "../../components/FixedHeight.astro";
-import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+import BlogCard from '../../components/BlogCard/BlogCard.astro';
+import FixedHeight from '../../components/FixedHeight.astro';
+import Layout from '../../layouts/Layout.astro';
 
-const blogPosts = await getCollection("blog");
+const blogPosts = await getCollection('blog');
 ---
 
 <Layout>
   <FixedHeight color='bg-slate-800' />
 
-  <main class='container max-w-3xl mx-auto mt-4 space-y-4'>
+  <main class='container max-w-3xl mx-auto mt-4 space-y-4 px-4 md:p-0'>
     {blogPosts.map((post) => <BlogCard post={post} />)}
   </main>
 

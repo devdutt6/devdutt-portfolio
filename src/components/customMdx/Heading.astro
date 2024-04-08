@@ -1,5 +1,5 @@
 ---
-import ShareButton from "../SocialButton/ShareButton.astro";
+import ShareButton from '../SocialButton/ShareButton.astro';
 ---
 
 <div class='flex justify-between cursor-default'>
@@ -9,7 +9,7 @@ import ShareButton from "../SocialButton/ShareButton.astro";
   <ShareButton />
   <script>
     // copy the link to blog
-    document.querySelector("#share")?.addEventListener("click", (_) => {
+    document.querySelector('#share')?.addEventListener('click', (_) => {
       let url = window.location.href;
       navigator.clipboard.writeText(url);
     });

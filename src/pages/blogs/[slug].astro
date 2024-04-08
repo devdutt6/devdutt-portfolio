@@ -1,13 +1,13 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Layout from "../../layouts/Layout.astro";
-import FixedHeight from "../../components/FixedHeight.astro";
-import Heading from "../../components/customMdx/Heading.astro";
-import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { ViewTransitions } from 'astro:transitions';
+import FixedHeight from '../../components/FixedHeight.astro';
+import Heading from '../../components/customMdx/Heading.astro';
+import Layout from '../../layouts/Layout.astro';
 
-export async function getStaticPaths(): Promise<any> {
-  const blogPosts = await getCollection("blog");
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
 
   return blogPosts.map((post) => ({
     params: {
@@ -20,7 +20,7 @@ export async function getStaticPaths(): Promise<any> {
 }
 
 type Props = {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog'>;
 };
 
 const { post } = Astro.props;
@@ -46,7 +46,7 @@ const {
     <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <title>{title || "Devdutt/Blog"}</title>
+    <title>{title || 'Devdutt/Blog'}</title>
     <meta property='og:title' content={og_title} />
     <meta property='og:description' content={og_description} />
     <meta property='og:url' content={finalURL} />
@@ -77,7 +77,7 @@ const {
     <FixedHeight color='bg-slate-800' />
     <FixedHeight color='bg-neutral-900' />
 
-    <div class='bg-neutral-900'>
+    <div class='bg-neutral-900 px-4 md:p-0'>
       <article
         class='md:prose-lg prose-invert prose-a:text-blue-600 prose-h2:text-yellow-400 prose-li:prose-ul:marker:text-yellow-400 prose-li:prose-ol:marker:text-blue-600 prose-code:select-all mx-auto prose'
       >

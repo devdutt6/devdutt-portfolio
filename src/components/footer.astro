@@ -1,36 +1,65 @@
 ---
-import { Image } from "astro:assets";
-import Social from "./Social.astro";
+import { Image } from 'astro:assets';
+import Social from './Social.astro';
 const side = 30;
 const socials = [
   {
-    link: "https://github.com/devdutt6",
-    alt: "github icon",
-    src: "/github.svg",
+    link: 'https://github.com/devdutt6',
+    alt: 'github icon',
+    src: '/github.svg',
   },
   {
-    link: "https://linkedin.com/devduttsinh",
-    alt: "linkedin icon",
-    src: "/linkedin.svg",
+    link: 'https://linkedin.com/devduttsinh',
+    alt: 'linkedin icon',
+    src: '/linkedin.svg',
   },
   {
-    link: "mailto:devduttchudasama1339@gmail.com",
-    alt: "email icon",
-    src: "/gmail.svg",
+    link: 'mailto:devduttchudasama1339@gmail.com',
+    alt: 'email icon',
+    src: '/gmail.svg',
+  },
+  {
+    link: 'https://www.naukri.com/code360/profile/devdutt',
+    alt: 'coding ninjas icon',
+    src: '/codingninjas.svg',
   },
 ];
 ---
 
 <footer
-  class='text-md px-14 flex items-center justify-between py-4 tracking-widest text-white'
+  class='grid items-center justify-between grid-cols-1 sm:grid-cols-3 py-4 tracking-widest text-white text-md px-14'
 >
-  <Social link='/'>
-    <Image src='/logo.svg' alt='home icon' width={side} height={side} />
-  </Social>
-  <p class='leading-none cursor-default shrink-0'>
-    Made with &#10084; by devdutt
-  </p>
-  <div class='shrink-0 flex gap-2'>
+  <div class='sm:hidden flex justify-between'>
+    <Social link='/'>
+      <Image src='/logo.svg' alt='home icon' width={side} height={side} />
+    </Social>
+    <div class='flex justify-end gap-2 shrink-0'>
+      {
+        socials.map((social) => (
+          <Social link={social.link}>
+            <Image
+              src={social.src}
+              alt={social.alt}
+              width={side}
+              height={side}
+            />
+          </Social>
+        ))
+      }
+    </div>
+  </div>
+  <div class='hidden sm:block content-start shrink-0'>
+    <Social link='/'>
+      <Image src='/logo.svg' alt='home icon' width={side} height={side} />
+    </Social>
+  </div>
+  <div class='flex justify-center mt-4 sm:m-0'>
+    <p class='leading-none cursor-default shrink-0'>
+      Made with &#10084; by devdutt
+    </p>
+  </div>
+
+  <div class='hidden sm:flex justify-end gap-2 shrink-0'>
     {
       socials.map((social) => (
         <Social link={social.link}>

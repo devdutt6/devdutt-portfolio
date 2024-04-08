@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../_layout.astro';
+
+export async function getStaticPaths() {
+  const team = await getCollection('projects', ({ slug }) => {
+    return slug.startsWith('team');
+  });
+
+  return team.map((project) => {
+    return {
+      params: {
+        slug: project.slug.split('/')[1],
+      },
+      props: {
+        project,
+      },
+    };
+  });
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout content={Content} />

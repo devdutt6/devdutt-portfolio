@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import FixedHeight from '../../components/FixedHeight.astro';
+import Layout from '../../layouts/Layout.astro';
+import List from './_list.astro';
+
+const personalProjects = await getCollection('projects', ({ id }) => {
+  return id.startsWith('personal');
+});
+const teamProjects = await getCollection('projects', ({ id }) => {
+  return id.startsWith('team');
+});
+---
+
+<Layout>
+  <FixedHeight color='bg-slate-800' />
+
+  <div class='grid md:grid-cols-2 bg-neutral-900'>
+    <div class='flex flex-col p-4 lg:items-end md:border-r-2'>
+      <h2
+        class='text-2xl relative md:text-5xl tracking-wide font-semibold sm:mb-8 text-yellow-400'
+      >
+        Personal
+      </h2>
+      <List projects={personalProjects} classNames='w-full lg:text-right' />
+    </div>
+    <div class='flex flex-col p-4'>
+      <h2
+        class='text-2xl relative md:text-5xl tracking-wide font-semibold sm:mb-8 text-yellow-400'
+      >
+        Team
+      </h2>
+      <List projects={teamProjects} />
+    </div>
+  </div>
+
+  <FixedHeight color='bg-neutral-900' />
+</Layout>

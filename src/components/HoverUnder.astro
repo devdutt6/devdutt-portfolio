@@ -1,0 +1,12 @@
+---
+interface Props {
+  color: 'border-indigo-600' | 'border-yellow-400';
+  class?: string;
+}
+const { color } = Astro.props;
+---
+
+<span
+  class={`inline-block relative before:content-[''] before:absolute before:bottom-0 before:w-full before:${color} before:border-[1px] before:translate-y-1 before:scale-x-0 hover:before:scale-x-100 before:transform before:duration-500 before:origin-right hover:before:origin-left before:transition-transform transition-colors`}
+  ><slot /></span
+>

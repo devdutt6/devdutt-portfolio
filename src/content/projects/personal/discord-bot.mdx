@@ -1,0 +1,45 @@
+import { Image } from 'astro:assets';
+import HoverUnder from '../../../components/HoverUnder.astro';
+import TagLook from '../../../components/TagLook.astro';
+
+# <HoverUnder color='border-yellow-400' class="border-yellow-400" >Discord Bot</HoverUnder>
+
+The discord bot is a command chat bot created for and on [<Image src="/discord.svg" alt="discord icon" width={16} height={16} class="inline-block" /> discord](https://discord.com/) platform.
+
+So bots on discord are all command bot. Commands bot basically take some command and arguments as input and do some magic on discord or any other trick which it was suppose to do.
+
+<hr />
+
+## <HoverUnder color='border-yellow-400' class="border-yellow-400">Commands</HoverUnder>
+
+So I have created a **time tracker, task management** type daily **office utility** bot having command features like
+
+- **Task management**
+
+  1. <TagLook>/addtask</TagLook>: Adds task to your todo list
+  2. <TagLook>/list</TagLook>: Lists all the task which are added in the list
+     and not yet marked as done
+  3. <TagLook>/edittask</TagLook>: To edit the existsing task from the list
+
+- **Time management**
+
+  1. <TagLook>/login</TagLook>: Creates a start time log to count working hours
+  2. <TagLook>/logout</TagLook>: Creates a end time log to count the working
+     hours
+  3. <TagLook>/leave</TagLook>: Creates a start break time log
+  4. <TagLook>/back</TagLook>: Craetes a end break time log
+
+- **Miscellaneous**
+
+  1. <span class='px-2 font-bold rounded-lg bg-white/40'>/totd</span>: Posts a
+     Thought of the day
+  2. <span class='px-2 font-bold rounded-lg bg-white/40'>/remainder</span>:
+     Create a remainder for anything
+
+## <HoverUnder color='border-yellow-400' class="border-yellow-400" >Technology Used</HoverUnder>
+
+1. [NodeJs](https://nodejs.org/en): Runtime for backend command handeling
+2. [DiscordJs](https://discord.js.org/): package for using discords provided APIs
+3. [node-cron](https://www.npmjs.com/package/node-cron): package to schedule cron jobs on NodeJs
+4. [MongoDB](https://www.mongodb.com/): No-Sql database
+5. [Luxon](https://moment.github.io/luxon/#/): a package for date utils functions

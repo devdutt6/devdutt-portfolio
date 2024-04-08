@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+  classNames?: string;
+}
+
+const { projects, classNames = '' } = Astro.props;
+---
+
+<ul
+  class={`list-none text-white text-lg tracking-wider leading-9 ${classNames}`}
+>
+  {
+    projects.map(({ id, slug }) => {
+      return (
+        <li>
+          <a
+            href={`/projects/${slug}`}
+            class="relative before:content-[''] before:absolute before:bottom-0 before:w-full before:border-indigo-600 before:border-[1px] before:translate-y-1 before:scale-x-0 hover:before:scale-x-100 before:transform before:duration-500 before:origin-left hover:before:origin-right before:transition-transform after:content-[''] after:absolute after:bottom-0 after:w-full after:border-indigo-600 after:border-[1px] after:-translate-y-1 after:scale-x-0 hover:after:scale-x-100 after:transform after:duration-500 after:origin-right hover:after:origin-left after:transition-transform after:top-0 after:left-0 after:h-0 hover:text-indigo-700 transition-colors"
+          >
+            {slug.split('/')[1]}
+          </a>
+        </li>
+      );
+    })
+  }
+</ul>

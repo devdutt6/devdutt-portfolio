@@ -1,0 +1,27 @@
+---
+import FixedHeight from '../../components/FixedHeight.astro';
+import Heading from '../../components/customMdx/Heading.astro';
+import FLayout from '../../layouts/Layout.astro';
+
+const { content: Content } = Astro.props;
+---
+
+<FLayout>
+  <FixedHeight color='bg-slate-800' />
+  <FixedHeight color='bg-slate-800' />
+  <FixedHeight color='bg-neutral-900' />
+
+  <div class='bg-neutral-900 px-4 md:p-0'>
+    <article
+      class='md:prose-lg prose-invert prose-a:text-blue-600 prose-h2:text-yellow-400 prose-li:prose-ul:marker:text-yellow-400 prose-li:prose-ol:marker:text-blue-600 prose-code:select-all mx-auto prose'
+    >
+      <Content components={{ h1: Heading }} />
+      <hr />
+    </article>
+  </div>
+
+  <FixedHeight color='bg-neutral-900' />
+  <FixedHeight color='bg-neutral-900' />
+</FLayout>
+
+<!-- TODO add emojis and icons -->
