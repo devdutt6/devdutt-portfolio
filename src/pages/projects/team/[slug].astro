@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../_layout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
 
 export async function getStaticPaths() {
   const team = await getCollection('projects', ({ slug }) => {
@@ -20,7 +25,8 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const { data } = project;
 const { Content } = await project.render();
 ---
 
-<Layout content={Content} />
+<Layout content={Content} data={data} />

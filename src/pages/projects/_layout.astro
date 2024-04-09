@@ -1,27 +1,50 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import FixedHeight from '../../components/FixedHeight.astro';
 import Heading from '../../components/customMdx/Heading.astro';
-import FLayout from '../../layouts/Layout.astro';
+import LogoHeader from '../../components/header/LogoHeader.astro';
+import Footer from '../../components/footer.astro';
 
-const { content: Content } = Astro.props;
+interface Props {
+  data: CollectionEntry<'projects'>['data'];
+  content: any;
+}
+const { content: Content, data } = Astro.props;
 ---
 
-<FLayout>
-  <FixedHeight color='bg-slate-800' />
-  <FixedHeight color='bg-slate-800' />
-  <FixedHeight color='bg-neutral-900' />
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content={data.shortSummary} />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <title>{data.projectName || 'Devdutt/Blog'}</title>
+    <meta property='og:title' content={data.projectName} />
+    <meta property='og:description' content={data.shortSummary} />
+    <meta property='og:type' content='article' />
+    <meta property='og:author' content={'devdutt'} />
+    <meta property='twitter:card' content='summary_large_image' />
+  </head>
+  <body class='bg-slate-800'>
+    <LogoHeader />
+    <FixedHeight color='bg-slate-800' />
+    <FixedHeight color='bg-slate-800' />
+    <FixedHeight color='bg-neutral-900' />
 
-  <div class='bg-neutral-900 px-4 md:p-0'>
-    <article
-      class='md:prose-lg prose-invert prose-a:text-blue-600 prose-h2:text-yellow-400 prose-li:prose-ul:marker:text-yellow-400 prose-li:prose-ol:marker:text-blue-600 prose-code:select-all mx-auto prose'
-    >
-      <Content components={{ h1: Heading }} />
-      <hr />
-    </article>
-  </div>
+    <div class='bg-neutral-900 px-4 md:p-0'>
+      <article
+        class='md:prose-lg prose-invert prose-a:text-blue-600 prose-h2:text-yellow-400 prose-li:prose-ul:marker:text-yellow-400 prose-li:prose-ol:marker:text-blue-600 prose-code:select-all mx-auto prose'
+      >
+        <Content components={{ h1: Heading }} />
+        <hr />
+      </article>
+    </div>
 
-  <FixedHeight color='bg-neutral-900' />
-  <FixedHeight color='bg-neutral-900' />
-</FLayout>
+    <FixedHeight color='bg-neutral-900' />
+    <FixedHeight color='bg-neutral-900' />
+    <Footer />
+  </body>
 
-<!-- TODO add emojis and icons -->
+  <!-- TODO add emojis and icons -->
+</html>

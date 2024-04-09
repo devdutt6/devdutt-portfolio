@@ -39,7 +39,18 @@ const skillsCollection = defineCollection({
   schema: z.record(z.string(), z.array(z.string())),
 });
 
+const projectsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    projectName: z.string(),
+    githubLink: z.string().optional(),
+    liveWebsiteLink: z.string().optional(),
+    shortSummary: z.string(),
+    orderNumber: z.number().default(100),
+  }),
+});
 export const collections = {
   blog: blogCollection,
-  skill: skillsCollection,
+  skills: skillsCollection,
+  projects: projectsCollection,
 };
