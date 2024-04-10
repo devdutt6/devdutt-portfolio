@@ -8,13 +8,14 @@ interface Props {
 }
 
 const { categoryTitle: title, values } = Astro.props;
-const [id, parentId, roundedId, iconId, enlargeId, neonId] = [
+const [id, parentId, roundedId, iconId, enlargeId, neonId, transparentId] = [
   title,
   'parent' + title,
   'rounded' + title,
   'icon' + title,
   'enlarge' + title,
   'neon' + title,
+  'transparent' + title,
 ];
 const titlizeTitle = (title: string) => {
   return title
@@ -38,7 +39,10 @@ const titlizeTitle = (title: string) => {
     class='flex items-center relative transition-colors justify-between p-4 text-white bg-neutral-900 rounded-t-xl rounded-b-xl'
     id={roundedId}
   >
-    <p class='tracking-widest font-bold text-lg'>
+    <p
+      class='tracking-widest bg-gradient-to-r from-fuchsia-600 to-cyan-500 bg-clip-text font-bold text-lg'
+      id={transparentId}
+    >
       {titlizeTitle(title)}
     </p>
     <div
@@ -71,15 +75,13 @@ const titlizeTitle = (title: string) => {
       const removeRounded = document.querySelector(`#rounded${oId}`);
       const rotateIt = document.querySelector(`#icon${oId}`);
       const neonAdd = document.querySelector(`#neon${oId}`);
+      const transparent = document.querySelector(`#transparent${oId}`);
 
       getElement?.addEventListener('click', () => {
         if (this.dataset.close === 'true') {
           enlargeIt?.classList.remove('hidden');
           enlargeIt?.classList.add('scale-y-100');
-          removeRounded?.classList.add('bg-gray-400');
-          removeRounded?.classList.remove('bg-neutral-900');
-          removeRounded?.classList.remove('text-white');
-          removeRounded?.classList.add('text-black');
+          transparent?.classList.add('text-transparent');
           removeRounded?.classList.remove('rounded-b-xl');
           neonAdd?.classList.add('blur-sm');
           rotateIt?.classList.add('rotate-90');
@@ -88,10 +90,7 @@ const titlizeTitle = (title: string) => {
           enlargeIt?.classList.add('hidden');
           enlargeIt?.classList.remove('scale-y-100');
           removeRounded?.classList.add('rounded-b-xl');
-          removeRounded?.classList.add('bg-neutral-900');
-          removeRounded?.classList.remove('bg-gray-400');
-          removeRounded?.classList.remove('text-black');
-          removeRounded?.classList.add('text-white');
+          transparent?.classList.remove('text-transparent');
           neonAdd?.classList.remove('blur-sm');
           rotateIt?.classList.remove('rotate-90');
           this.setAttribute('data-close', 'true');
