@@ -1,5 +1,6 @@
 ---
 import { getEntry } from 'astro:content';
+import BackButton from '../../components/BackButton.astro';
 import FixedHeight from '../../components/FixedHeight.astro';
 import Layout from '../../layouts/Layout.astro';
 import Drawer from './_drawer.astro';
@@ -19,26 +20,31 @@ const second = arr.slice(len / 2);
 ---
 
 <Layout>
-  <FixedHeight color='bg-slate-800' />
-  <div
-    class='grid max-w-3xl grid-cols-1 mx-auto md:grid-cols-2 gap-x-2 gap-y-2 px-2'
-  >
-    <div class='flex flex-col gap-6'>
-      {
-        first.map((val) => {
-          // @ts-ignore
-          return <Drawer categoryTitle={val.category} values={val.values} />;
-        })
-      }
+  <FixedHeight color='bg-neutral-900' />
+  <div class='bg-neutral-900 pb-2'>
+    <div
+      class='grid max-w-3xl grid-cols-1 mx-auto md:grid-cols-2 gap-x-2 gap-y-2 px-2'
+    >
+      <div class='flex flex-col gap-6 p-4'>
+        {
+          first.map((val) => {
+            // @ts-ignore
+            return <Drawer categoryTitle={val.category} values={val.values} />;
+          })
+        }
+      </div>
+      <div class='flex flex-col gap-6 p-4 pt-0 sm:p-4'>
+        {
+          second.map((val) => {
+            // @ts-ignore
+            return <Drawer categoryTitle={val.category} values={val.values} />;
+          })
+        }
+      </div>
     </div>
-    <div class='flex flex-col gap-6'>
-      {
-        second.map((val) => {
-          // @ts-ignore
-          return <Drawer categoryTitle={val.category} values={val.values} />;
-        })
-      }
+    <div class='flex justify-start items-center max-w-3xl mx-auto px-4'>
+      <BackButton />
     </div>
   </div>
-  <FixedHeight color='bg-slate-800' />
+  <FixedHeight color='bg-neutral-900' />
 </Layout>

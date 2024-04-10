@@ -9,10 +9,13 @@ const blogPosts = await getCollection('blog');
 
 <Layout>
   <FixedHeight color='bg-slate-800' />
+  <FixedHeight color='bg-neutral-900' />
 
-  <main class='container max-w-3xl mx-auto mt-4 space-y-4 px-4 md:p-0'>
-    {blogPosts.map((post) => <BlogCard post={post} />)}
-  </main>
+  <div class='bg-neutral-900'>
+    <main class='container max-w-3xl mx-auto space-y-4 px-4 md:p-0 md:pt-4'>
+      {blogPosts.map((post) => <BlogCard post={post} />)}
+    </main>
+  </div>
 
-  <FixedHeight color='bg-slate-800' />
+  <FixedHeight color='bg-neutral-900' />
 </Layout>

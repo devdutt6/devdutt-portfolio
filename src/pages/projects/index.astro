@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import FixedHeight from '../../components/FixedHeight.astro';
-import Layout from '../../layouts/Layout.astro';
 import HoverUnder from '../../components/HoverUnder.astro';
 import ShareButton from '../../components/SocialButton/ShareButton.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const personalProjects = await getCollection('projects', ({ id }) => {
   return id.startsWith('personal');
@@ -18,7 +18,9 @@ const teamProjects = await getCollection('projects', ({ id }) => {
   <FixedHeight color='bg-neutral-900' />
 
   <div class='bg-neutral-900'>
-    <div class='grid grid-cols-2 max-w-3xl gap-4 mx-auto p-4'>
+    <div
+      class='grid grid-cols-1 max-w-md md:grid-cols-2 md:max-w-3xl gap-4 mx-auto p-4'
+    >
       {
         personalProjects.concat(teamProjects).map(({ id, slug, data }) => {
           return (
@@ -28,7 +30,7 @@ const teamProjects = await getCollection('projects', ({ id }) => {
                 <div class='flex justify-center items-center flex-col'>
                   <HoverUnder color='border-yellow-400'>
                     <a href={`/projects/${slug}`}>
-                      <h2 class='text-2xl tracking-wide font-bold text-slate-100 w-fit cursor-pointer hover:text-transparent  bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text duration-700'>
+                      <h2 class='text-2xl tracking-wide font-bold cursor-pointer text-transparent  bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text'>
                         {data.projectName}
                       </h2>
                     </a>

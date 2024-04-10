@@ -1,0 +1,28 @@
+---
+
+---
+
+<div class='group relative rounded-lg px-2'>
+  <div
+    class='group-active:invisible blur-sm bg-gradient-to-r from-fuchsia-600 to-cyan-500 group-hover:scale-x-[0.85] absolute inset-0 h-full transition-transform transform scale-x-0 rounded-lg'
+  >
+  </div>
+  <button
+    class='bg-neutral-900 relative flex items-center justify-center h-full px-3 py-2 text-lg text-white rounded-lg outline-none'
+    id='back'>&#8592; Back</button
+  >
+</div>
+
+<script>
+  const btn = document.querySelector('#back');
+  btn?.addEventListener('click', belowfunction);
+  function belowfunction() {
+    console.log(window.location.href);
+    const Url = new URL(window.location.href);
+    const url = Url.pathname.split('/');
+    url.pop();
+    Url.pathname = url.join('/');
+    console.log(Url.toString());
+    window.location.href = Url.toString();
+  }
+</script>
