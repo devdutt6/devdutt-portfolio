@@ -26,11 +26,11 @@ const teamProjects = await getCollection('projects', ({ id }) => {
           return (
             <div class='flex relative flex-col rounded-xl bg-neutral-900 group/parent'>
               <div class='absolute scale-[1.020] invisible group-hover/parent:scale-100 group-hover/parent:visible transform transition-transform duration-150 h-full inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 blur-sm z-0 group-hover/parent:-translate-y-2' />
-              <div class='flex flex-col justify-between rounded-lg relative group-hover/parent:-translate-y-2 bg-neutral-900 p-4 h-full'>
+              <div class='flex flex-col justify-between rounded-lg relative group-hover/parent:-translate-y-2 bg-neutral-900 p-4 h-full ring-1 ring-zinc-700 hover:ring-zinc-500'>
                 <div class='flex justify-center items-center flex-col'>
                   <HoverUnder color='border-yellow-400'>
                     <a href={`/projects/${slug}`}>
-                      <h2 class='text-2xl tracking-wide font-bold cursor-pointer text-transparent  bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text'>
+                      <h2 class='text-2xl tracking-wide font-bold cursor-pointer text-white bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text group-hover/parent:text-transparent duration-500 transition-colors'>
                         {data.projectName}
                       </h2>
                     </a>
@@ -40,8 +40,8 @@ const teamProjects = await getCollection('projects', ({ id }) => {
                     {data.shortSummary}
                   </p>
                 </div>
-                <div class='flex justify-end text-white text-xl mt-8'>
-                  <ShareButton />
+                <div class='flex justify-end text-white mt-8 group-hover/parent:opacity-100 opacity-0 transition-opacity duration-300'>
+                  <a href={`/projects/${slug}`}>Read More</a>
                 </div>
               </div>
             </div>

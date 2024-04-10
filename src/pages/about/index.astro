@@ -1,0 +1,31 @@
+---
+import FixedHeight from '../../components/FixedHeight.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout>
+  <FixedHeight color='bg-neutral-900' />
+  <div class='bg-neutral-900'>
+    <div
+      class='relative mx-auto max-w-5xl grid grid-cols-12 text-5xl text-white'
+    >
+      <aside class='col-span-4 sticky top-[100px] h-fit p-4'>
+        <section
+          class='bg-neutral-950 rounded-lg ring-1 ring-zinc-700 hover:ring-zinc-500 p-4'
+        >
+          <h2 class='text-2xl pb-1'>Software Developer</h2>
+          <p class='text-sm tracking-wide'>
+            Hi this should be the shor bio here Lorem, ipsum dolor sit amet
+            consectetur adipisicing elit. Nulla nostrum nemo rem delectus,
+            soluta voluptate facilis aliquid iusto repellendus, voluptas
+            reiciendis? Quod nisi culpa explicabo consequatur est beatae, fugit
+            dicta?
+          </p>
+        </section>
+      </aside>
+      <div class='col-span-8 h-screen flex justify-center items-center'>
+        main
+      </div>
+    </div>
+  </div>
+</Layout>
