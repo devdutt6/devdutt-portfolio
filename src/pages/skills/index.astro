@@ -21,29 +21,33 @@ const second = arr.slice(len / 2);
 
 <Layout>
   <FixedHeight color='bg-neutral-900' />
-  <div class='bg-neutral-900 pb-2'>
-    <div class='mx-auto text-6xl font-extrabold text-white p-4 max-w-3xl'>
-      SkillS
-    </div>
-    <div class='grid max-w-3xl grid-cols-1 mx-auto md:grid-cols-2 p-4 gap-4'>
-      <div class='flex flex-col gap-6'>
-        {
-          first.map((val) => {
-            // @ts-ignore
-            return <Drawer categoryTitle={val.category} values={val.values} />;
-          })
-        }
+  <div class='bg-neutral-900'>
+    <div class='max-w-3xl p-4 mx-auto space-y-4'>
+      <div class='text-6xl font-extrabold text-white'>SkillS</div>
+      <div class='md:grid-cols-2 grid grid-cols-1 gap-4 mx-auto'>
+        <div class='flex flex-col gap-6'>
+          {
+            first.map((val) => {
+              // @ts-ignore
+              return (
+                <Drawer categoryTitle={val.category} values={val.values} />
+              );
+            })
+          }
+        </div>
+        <div class='flex flex-col gap-6'>
+          {
+            second.map((val) => {
+              // @ts-ignore
+              return (
+                <Drawer categoryTitle={val.category} values={val.values} />
+              );
+            })
+          }
+        </div>
       </div>
-      <div class='flex flex-col gap-6'>
-        {
-          second.map((val) => {
-            // @ts-ignore
-            return <Drawer categoryTitle={val.category} values={val.values} />;
-          })
-        }
-      </div>
     </div>
-    <!-- <div class='flex justify-start items-center max-w-3xl mx-auto px-3 py-4'>
+    <!-- <div class='flex items-center justify-start max-w-3xl px-3 py-4 mx-auto'>
       <BackButton />
     </div> -->
   </div>

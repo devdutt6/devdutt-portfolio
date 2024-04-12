@@ -7,47 +7,45 @@ import LinkButton from './_linkButton.astro';
 <Layout>
   <FixedHeight color='bg-neutral-900' />
   <div class='bg-neutral-900'>
-    <div
-      class='relative max-w-5xl mx-auto text-6xl font-extrabold text-white p-4'
-    >
-      AbOUT
-    </div>
+    <div class='lg:max-w-5xl max-w-3xl p-4 mx-auto space-y-4'>
+      <div class='relative text-6xl font-extrabold text-white'>AbOUT</div>
 
-    <div
-      class='relative mx-auto max-w-5xl grid grid-cols-12 text-white p-4 gap-4'
-    >
-      <aside class='col-span-4 sticky top-[100px] h-fit group space-y-4'>
-        <section
-          class='bg-neutral-950 rounded-lg ring-1 ring-zinc-700 hover:ring-zinc-500 p-4'
+      <div class='relative grid grid-cols-12 gap-4 text-white'>
+        <aside
+          class='col-span-12 lg:col-span-4 lg:sticky lg:top-[100px] h-fit group space-y-4'
         >
-          <h2 class='text-2xl pb-1'>Software Developer</h2>
-          <p class='text-sm tracking-wide text-white/70'>
-            I'm Devdutt and i've been building stuff on internet since 2021 in
-            the day. And solves DSA problems at night. <br />I have around 3
-            years of experience in web development mainly revolving around MERN
-            stack.
-          </p>
+          <section
+            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 rounded-lg'
+          >
+            <h2 class='pb-1 text-2xl'>Software Developer</h2>
+            <p class='text-white/70 text-sm tracking-wide'>
+              I'm Devdutt and i've been building stuff on internet since 2021 in
+              the day. And solves DSA problems at night. <br />I have around 3
+              years of experience in web development mainly revolving around
+              MERN stack.
+            </p>
 
-          <div class='flex justify-end items-center gap-2 mt-4'>
-            <LinkButton
-              text='GitHub'
-              link='https://github.com/devdutt6'
-              target='_blank'
-            />
-            <LinkButton text='Skills' link='/skills' />
-            <LinkButton text='Projects' link='/projects' />
-          </div>
-        </section>
-        <section
-          class='bg-neutral-950 rounded-lg ring-1 ring-zinc-700 hover:ring-zinc-500 p-4'
+            <div class='flex items-center justify-end gap-2 mt-4'>
+              <LinkButton
+                text='GitHub'
+                link='https://github.com/devdutt6'
+                target='_blank'
+              />
+              <LinkButton text='Skills' link='/skills' />
+              <LinkButton text='Projects' link='/projects' />
+            </div>
+          </section>
+          <section
+            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 rounded-lg'
+          >
+            <h3 class='text-2xl'>Table of Content</h3>
+          </section>
+        </aside>
+        <div
+          class='ring-1 ring-zinc-700 bg-neutral-950 lg:col-span-8 flex flex-col h-screen col-span-12 p-4 rounded-lg'
         >
-          <h3 class='text-2xl'>Table of Content</h3>
-        </section>
-      </aside>
-      <div
-        class='col-span-8 h-screen flex flex-col px-4 rounded-lg ring-1 ring-zinc-700 bg-neutral-950'
-      >
-        <div class='rounded-lg ring-1 ring-zinc-700 bg-neutral-950'>main</div>
+          main
+        </div>
       </div>
     </div>
   </div>

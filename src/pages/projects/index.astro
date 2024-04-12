@@ -16,49 +16,49 @@ const teamProjects = await getCollection('projects', ({ id }) => {
   <FixedHeight color='bg-neutral-900' />
 
   <div class='bg-neutral-900'>
-    <div class='mx-auto text-6xl font-extrabold text-white p-4 max-w-3xl'>
-      PROjECtS
-    </div>
-    <div
-      class='grid grid-cols-1 max-w-md md:grid-cols-2 md:max-w-3xl gap-4 mx-auto p-4'
-    >
-      {
-        personalProjects.concat(teamProjects).map(({ id, slug, data }) => {
-          return (
-            <div class='flex relative flex-col rounded-xl bg-neutral-900 group/parent'>
-              <div class='absolute scale-[1.020] invisible group-hover/parent:scale-100 group-hover/parent:visible transform transition-transform duration-150 h-full inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 blur-sm z-0 group-hover/parent:-translate-y-2' />
-              <div class='flex flex-col justify-between rounded-lg relative group-hover/parent:-translate-y-2 bg-neutral-900 p-4 h-full ring-1 ring-zinc-700 hover:ring-zinc-500'>
-                <div class='flex justify-center items-center flex-col'>
-                  <HoverUnder color='border-yellow-400'>
-                    <a href={`/projects/${slug}`}>
-                      <h2 class='text-2xl tracking-wide font-bold cursor-pointer text-white bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text group-hover/parent:text-transparent duration-500 transition-colors'>
-                        {data.projectName}
-                      </h2>
-                    </a>
-                  </HoverUnder>
+    <div class='max-w-3xl p-4 mx-auto space-y-6'>
+      <div class='text-6xl font-extrabold text-white'>PROjECtS</div>
+      <div
+        class='md:grid-cols-2 md:max-w-3xl grid max-w-md grid-cols-1 gap-4 mx-auto'
+      >
+        {
+          personalProjects.concat(teamProjects).map(({ id, slug, data }) => {
+            return (
+              <div class='rounded-xl bg-neutral-900 group/parent relative flex flex-col'>
+                <div class='absolute scale-[1.020] invisible group-hover/parent:scale-100 group-hover/parent:visible transform transition-transform duration-150 h-full inset-0 bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 blur-sm z-0 group-hover/parent:-translate-y-2' />
+                <div class='group-hover/parent:-translate-y-2 bg-neutral-900 ring-1 ring-zinc-700 hover:ring-zinc-500 relative flex flex-col justify-between h-full p-4 rounded-lg'>
+                  <div class='flex flex-col items-center justify-center'>
+                    <HoverUnder color='border-yellow-400'>
+                      <a href={`/projects/${slug}`}>
+                        <h2 class='bg-gradient-to-br from-fuchsia-600 to-cyan-500 bg-clip-text group-hover/parent:text-transparent text-2xl font-bold tracking-wide text-white transition-colors duration-500 cursor-pointer'>
+                          {data.projectName}
+                        </h2>
+                      </a>
+                    </HoverUnder>
 
-                  <p class='text-lg leading-7 text-white mt-4'>
-                    {data.shortSummary}
-                  </p>
-                </div>
-                <div class='flex justify-end text-white mt-8 group-hover/parent:opacity-100 opacity-0 transition-opacity duration-300'>
-                  <a href={`/projects/${slug}`}>Read More</a>
+                    <p class='mt-4 text-lg leading-7 text-white'>
+                      {data.shortSummary}
+                    </p>
+                  </div>
+                  <div class='group-hover/parent:opacity-100 flex justify-end mt-8 text-white transition-opacity duration-300 opacity-0'>
+                    <a href={`/projects/${slug}`}>Read More</a>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })
-      }
+            );
+          })
+        }
+      </div>
     </div>
   </div>
 
   <FixedHeight color='bg-neutral-900' />
 </Layout>
 
-<!-- <div class='grid md:grid-cols-2 bg-neutral-900'>
-    <div class='flex flex-col p-4 lg:items-end md:border-r-2'>
+<!-- <div class='md:grid-cols-2 bg-neutral-900 grid'>
+    <div class='lg:items-end md:border-r-2 flex flex-col p-4'>
       <h2
-        class='text-2xl relative md:text-5xl tracking-wide font-semibold sm:mb-8 text-yellow-400'
+        class='md:text-5xl sm:mb-8 relative text-2xl font-semibold tracking-wide text-yellow-400'
       >
         Personal
       </h2>
@@ -66,7 +66,7 @@ const teamProjects = await getCollection('projects', ({ id }) => {
     </div>
     <div class='flex flex-col p-4'>
       <h2
-        class='text-2xl relative md:text-5xl tracking-wide font-semibold sm:mb-8 text-yellow-400'
+        class='md:text-5xl sm:mb-8 relative text-2xl font-semibold tracking-wide text-yellow-400'
       >
         Team
       </h2>
