@@ -1,12 +1,20 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 import { Image } from 'astro:assets';
-const { text, link } = Astro.props;
+
+interface Props {
+  text: string;
+  link: string;
+  target?: HTMLAttributes<'a'>['target'];
+}
+
+const { text, link, target = '_self' } = Astro.props;
 ---
 
 <div
   class='ring-1 ring-neutral-600 rounded-lg cursor-pointer group/name hover:-translate-y-1 tracking-wide'
 >
-  <a href={link} class='flex text-sm py-2 px-2'>
+  <a href={link} class='flex text-sm py-2 px-2' target={target}>
     {text}&nbsp;
     <Image
       src='/openLink.svg'

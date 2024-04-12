@@ -18,9 +18,23 @@ import shareButton from './share.svg';
       height='24'
       class='inline'
       style={{ margin: 0 }}
-    />&nbsp;I&nbsp;Share
+    />&nbsp;<span>Copy Link</span>
   </button>
 </div>
+<script>
+  // copy the link to blog
+  const btn = document.querySelector('#share');
+  const span = document.querySelector('#share span');
+  btn?.addEventListener('click', (_) => {
+    let url = window.location.href;
+    navigator.clipboard.writeText(url);
+    console.log(span);
+    if (span) span.textContent = 'Copied!';
+    setTimeout(() => {
+      if (span) span.textContent = 'Copy Link';
+    }, 1500);
+  });
+</script>
 
 <!--
   class='bg-clip-border hover:bg-gradient-to-r from-fuchsia-600 to-cyan-500 relative h-10 border-2 border-transparent rounded-lg'

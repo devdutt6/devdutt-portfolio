@@ -7,13 +7,6 @@ import ShareButton from '../SocialButton/ShareButton.astro';
     <slot />
   </h1>
   <ShareButton />
-  <script>
-    // copy the link to blog
-    document.querySelector('#share')?.addEventListener('click', (_) => {
-      let url = window.location.href;
-      navigator.clipboard.writeText(url);
-    });
-  </script>
 </div>
 
 <!-- SVG for link -->
