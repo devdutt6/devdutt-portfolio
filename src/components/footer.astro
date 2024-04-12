@@ -9,7 +9,7 @@ const socials = [
     src: '/github.svg',
   },
   {
-    link: 'https://linkedin.com/devduttsinh',
+    link: 'https://linkedin.com/in/devduttsinh',
     alt: 'linkedin icon',
     src: '/linkedin.svg',
   },
@@ -27,13 +27,13 @@ const socials = [
 ---
 
 <footer
-  class='grid items-center justify-between grid-cols-1 sm:grid-cols-3 py-4 tracking-widest text-white text-md px-14'
+  class='sm:grid-cols-3 text-md px-14 grid items-center justify-between grid-cols-1 py-4 tracking-widest text-white'
 >
   <div class='sm:hidden flex justify-between'>
     <Social link='/'>
       <Image src='/logo.svg' alt='home icon' width={side} height={side} />
     </Social>
-    <div class='flex justify-end gap-2 shrink-0'>
+    <div class='shrink-0 flex justify-end gap-2'>
       {
         socials.map((social) => (
           <Social link={social.link}>
@@ -48,18 +48,18 @@ const socials = [
       }
     </div>
   </div>
-  <div class='hidden sm:block content-start shrink-0'>
+  <div class='sm:block shrink-0 content-start hidden'>
     <Social link='/'>
       <Image src='/logo.svg' alt='home icon' width={side} height={side} />
     </Social>
   </div>
-  <div class='flex justify-center mt-4 sm:m-0'>
-    <p class='leading-none cursor-default shrink-0'>
+  <div class='sm:m-0 flex justify-center mt-4'>
+    <p class='shrink-0 leading-none cursor-default'>
       Made with &#10084; by devdutt
     </p>
   </div>
 
-  <div class='hidden sm:flex justify-end gap-2 shrink-0'>
+  <div class='sm:flex shrink-0 justify-end hidden gap-2'>
     {
       socials.map((social) => (
         <Social link={social.link}>

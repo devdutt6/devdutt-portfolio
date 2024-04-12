@@ -1,7 +1,7 @@
 ---
-import type { MarkdownLayoutProps } from "astro";
-import FixedHeight from "../components/FixedHeight.astro";
-import Layout from "./Layout.astro";
+import type { MarkdownLayoutProps } from 'astro';
+import FixedHeight from '../components/FixedHeight.astro';
+import Layout from './Layout.astro';
 
 type Props = MarkdownLayoutProps<{
   title: string;
@@ -23,7 +23,7 @@ const { frontmatter, url } = Astro.props;
     <meta name='description' content={frontmatter.og_description} />
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <title>{frontmatter.title || "Devdutt/Blog"}</title>
+    <title>{frontmatter.title || 'Devdutt/Blog'}</title>
     <meta property='og:title' content={frontmatter.og_title} />
     <meta property='og:description' content={frontmatter.og_description} />
     <meta property='og:url' content={url} />
@@ -38,8 +38,8 @@ const { frontmatter, url } = Astro.props;
     />
   </head>
   <Layout>
-    <FixedHeight color='bg-slate-800' />
-    <FixedHeight color='bg-slate-800' />
+    <FixedHeight color='bg-slate-700' />
+    <FixedHeight color='bg-slate-700' />
     <FixedHeight color='bg-neutral-900' />
 
     <div class='bg-neutral-900'>

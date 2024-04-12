@@ -27,12 +27,19 @@ import shareButton from './share.svg';
   const span = document.querySelector('#share span');
   btn?.addEventListener('click', (_) => {
     let url = window.location.href;
-    navigator.clipboard.writeText(url);
-    console.log(span);
-    if (span) span.textContent = 'Copied!';
-    setTimeout(() => {
-      if (span) span.textContent = 'Copy Link';
-    }, 1500);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url);
+      if (span) span.textContent = 'Copied!';
+      setTimeout(() => {
+        if (span) span.textContent = 'Copy Link';
+      }, 1500);
+    } else {
+      console.log('clipboard restricted');
+      if (span) span.textContent = 'Failed!';
+      setTimeout(() => {
+        if (span) span.textContent = 'Copy Link';
+      }, 1500);
+    }
   });
 </script>
 
