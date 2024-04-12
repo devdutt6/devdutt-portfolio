@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+const { text, link } = Astro.props;
+---
+
+<div
+  class='ring-1 ring-neutral-600 rounded-lg cursor-pointer group/name hover:-translate-y-1 tracking-wide'
+>
+  <a href={link} class='flex text-sm py-2 px-2'>
+    {text}&nbsp;
+    <Image
+      src='/openLink.svg'
+      class='inline-block group-hover/name:scale-110'
+      width={18}
+      height={18}
+      alt='open link icon'
+    />
+  </a>
+</div>

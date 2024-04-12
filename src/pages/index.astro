@@ -23,20 +23,6 @@ const paths = ['About', 'Blogs'];
           <span class='text-5xl'>Hello, World!</span><br /><br />
           Devdutt here, I am a Software Developer from Gujarat.<br />
         </p>
-        <nav class='space-y-4'>
-          {
-            paths.map((path) => (
-              <li class='list-none  py-4'>
-                <a
-                  href={`/${path.toLowerCase()}`}
-                  class="relative before:content-[''] before:absolute before:bottom-0 before:w-full before:border-yellow-600 before:border-[1px] before:translate-y-1 before:scale-x-0 hover:before:scale-x-100 before:transform before:duration-500 before:origin-right hover:before:origin-left before:transition-transform cursor-pointer text-4xl group font-bold min-w-36 bg-gradient-to-r from-fuchsia-600 to-cyan-500 bg-clip-text text-transparent"
-                >
-                  {path}
-                </a>
-              </li>
-            ))
-          }
-        </nav>
       </div>
     </div>
 
