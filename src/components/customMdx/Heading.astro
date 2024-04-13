@@ -1,13 +1,25 @@
 ---
+import { Image } from 'astro:assets';
 import ShareButton from '../SocialButton/ShareButton.astro';
 ---
 
-<div class='flex justify-between cursor-default'>
+<div class='relative flex justify-between cursor-default group/head'>
+  <div
+    class='absolute -translate-x-10 translate-y-2 opacity-0 group-hover/head:opacity-100 text-white h-[50%] not-prose transition-opacity duration-500 cursor-pointer back'
+  >
+    <Image src='/back.svg' width={40} height={40} alt='back button icon' />
+  </div>
   <h1>
     <slot />
   </h1>
   <ShareButton />
 </div>
+<script>
+  const backButton = document.querySelector('.back');
+  backButton?.addEventListener('click', () => {
+    history.go(-1);
+  });
+</script>
 
 <!-- SVG for link -->
 <!-- <svg

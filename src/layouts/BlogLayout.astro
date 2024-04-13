@@ -36,6 +36,11 @@ const { frontmatter, url } = Astro.props;
       property='article:published_time'
       content={frontmatter.og_publishedOn}
     />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
   <Layout>
     <FixedHeight color='bg-slate-700' />
