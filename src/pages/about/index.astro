@@ -15,7 +15,7 @@ import LinkButton from './_linkButton.astro';
           class='col-span-12 lg:col-span-4 lg:sticky lg:top-[100px] h-fit group space-y-4'
         >
           <section
-            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 space-y-4 rounded-lg'
+            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 px-6 space-y-4 rounded-lg'
           >
             <h2 class='border-neutral-700 text-3xl font-semibold border-b-2'>
               Software Developer
@@ -39,7 +39,7 @@ import LinkButton from './_linkButton.astro';
             </div>
           </section>
           <section
-            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 space-y-2 rounded-lg'
+            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 px-6 space-y-2 rounded-lg'
           >
             <h3 class='border-neutral-700 text-2xl font-semibold border-b-2'>
               Table of Content
@@ -59,15 +59,27 @@ import LinkButton from './_linkButton.astro';
               </button>
               <button
                 class='text-white/90 clickEvent text-lg tracking-wide'
+                data-related='skills'
+              >
+                3. Skills
+              </button>
+              <button
+                class='text-white/90 clickEvent text-lg tracking-wide'
+                data-related='projects'
+              >
+                4. Projects
+              </button>
+              <button
+                class='text-white/90 clickEvent text-lg tracking-wide'
                 data-related='intrests'
               >
-                3. Personal Intrests
+                5. Personal Intrests
               </button>
             </div>
           </section>
         </aside>
         <div
-          class='ring-1 ring-zinc-700 bg-neutral-950 lg:col-span-8 flex flex-col col-span-12 p-4 space-y-6 rounded-lg'
+          class='ring-1 ring-zinc-700 bg-neutral-950 lg:col-span-8 flex flex-col col-span-12 p-4 px-8 space-y-6 rounded-lg'
         >
           <section
             class='[&>p]:text-white/70 [&>p]:text-sm [&>h2]:border-b-2 [&>h2]:border-neutral-700 leading-6'
@@ -96,6 +108,56 @@ import LinkButton from './_linkButton.astro';
             <p>Jun, 2022 - Oct, 2023 : OpenXcell</p>
             <h4>MERN Stack Developer</h4>
             <p>Nov, 2022 - : Evolution</p>
+          </section>
+
+          <section
+            class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
+          >
+            <h2 class='mb-2 text-3xl font-semibold' id='skills'>Skills</h2>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Frontend:</span> React, Next.js,
+              Astro.js, Svelte.js
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Backend:</span> Node.js, MongoDB,
+              PostgreSQL
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>APIs:</span> REST, WebSocket,
+              GraphQL, Event-based architecture (Kafka)
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Cloud Services:</span> AWS (S3,
+              EC2, Lambda)
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Tools & Practices:</span> Docker,
+              Version Control, Postman(testing and monitoring), Swagger, VSCode(like
+              a pro)
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Testing:</span> Jest, Vitest
+              (automated unit testing)
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Architecture:</span> Microservices,
+              OOP principles (SOLID)
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Styling:</span> Tailwind CSS
+            </p>
+            <p class='text-white/80 tracking-wide'>
+              <span class='font-bold tracking-wide'>Languages:</span> JavaScript/TypeScript,
+              C++ (for DSA), Go, Rust, Python
+            </p>
+          </section>
+
+          <section
+            class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
+          >
+            <h2 class='mb-2 text-3xl font-semibold' id='intrests'>Projects</h2>
+            <p><span class='font-bold tracking-wide'>Personal:</span></p>
+            <p><span class='font-bold tracking-wide'>Team:</span></p>
           </section>
 
           <section
