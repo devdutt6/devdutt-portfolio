@@ -1,0 +1,15 @@
+---
+import IconLink from "./IconLink.astro"
+
+interface Props {
+  github?: string
+  website?: string
+}
+
+const { github, website } = Astro.props;
+---
+{(github || website) &&
+<div class="flex items-center not-prose gap-2">
+  {github  && <IconLink link={github} type='github' />}
+  {website && <IconLink link={website} type='internet' />}
+</div>}

@@ -7,9 +7,12 @@ orderNumber: 100
 ---
 
 import HoverUnder from '../../../components/HoverUnder.astro';
+import LinkProject from '../../../components/LinkProject.astro';
 import TagLook from '../../../components/TagLook.astro';
 
 # <HoverUnder color="border-yellow-400">AOC template</HoverUnder>
+
+<LinkProject github={frontmatter.githubLink} website={frontmatter.liveWebsiteLink} />
 
 **AOC** in AOCtemplate stand for [Advent of Code](https://adventofcode.com/) it is a website which hosts a coding hackathon at every year in the month🗓️ of october. It starts on 1️⃣<sup>st</sup> of october and ends on 31<sup>st</sup>.
 

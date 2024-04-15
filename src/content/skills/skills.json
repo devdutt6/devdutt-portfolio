@@ -1,29 +1,28 @@
 {
   "backend": [
-    "nodejs",
+    "Node.js",
     "REST",
     "GraphQL",
-    "sockets",
-    "nestjs",
-    "event based architecture",
-    "microservices architecture with submodules"
+    "Sockets",
+    "NestJS",
+    "Event based architecture",
+    "Microservices architecture with submodules"
   ],
-  "frontend": ["react", "nextjs", "astro", "svelte"],
-  "cloud": ["ec2", "s3", "sqs", "lambda"],
-  "databases": ["mongo", "postgresql", "redis"],
-  "documentation": ["swagger", "jsdoc", "postman"],
-  "languages": ["Javascript/typescript", "go", "rust", "python", "php", "CPP"],
-  "testing": ["jest", "postman"],
+  "frontend": ["React", "Next.js", "Astro"],
+  "cloud": ["EC2", "S3", "Lambda"],
+  "databases": ["MongoDB", "PostgreSQL", "Redis"],
+  "documentation": ["Swagger", "JSDoc", "Postman"],
+  "languages": ["Javascript/Typescript", "CPP", "python"],
+  "testing": ["Jest", "Postman"],
   "others_skills": [
-    "problem solving",
-    "3rd party api integrations",
-    "debugging tools",
-    "readable code",
-    "SOLID",
-    "OOP",
-    "docker",
-    "version control"
+    "Docker",
+    "Problem Solving",
+    "Debugging Tools",
+    "Readable Code",
+    "OOP concepts",
+    "Version Control",
+    "3rd Party API Integrations"
   ],
-  "message_event_passing": ["kafka", "rabbitMQ"],
+  "message_event_passing": ["Kafka", "RabbitMQ"],
   "web_technologies": ["Tailwind", "CSS3", "HTML5"]
 }

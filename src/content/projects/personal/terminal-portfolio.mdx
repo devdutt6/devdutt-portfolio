@@ -2,21 +2,27 @@
 projectName: Devdutts Terminal Portfolio
 githubLink: https://github.com/devdutt6/devdutt6.github.io
 liveWebsiteLink: https://devdutt6-github-io.vercel.app
-shortSummary: Devdutt portfolio website but disguised as a CLI/terminal. Built with NextJs.
+shortSummary: Devdutt portfolio website but disguised as a CLI/terminal. Built with Next.js.
 orderNumber: 100
 ---
 
 import HoverUnder from '../../../components/HoverUnder.astro';
+import LinkProject from '../../../components/LinkProject.astro';
 import TagLook from '../../../components/TagLook.astro';
 
 # <HoverUnder color="border-yellow-400">Terminal Portfolio</HoverUnder>
+
+<LinkProject
+  github={frontmatter.githubLink}
+  website={frontmatter.liveWebsiteLink}
+/>
 
 Are you a Linux user or that CLI guy, the one who enjoys using keyboard⌨️ instead of mouse🖱️, if yes then you will enjoy this!
 
 [My Portfolio website🌐](https://devdutt6-github-io.vercel.app/) but in terminal like environment.
 I insist try <TagLook>theme</TagLook> command there!
 
-It has **no package dependency** other than what NextJs is shipped with📦.
+It has **no package dependency** other than what Next.js is shipped with📦.
 
 ## <HoverUnder color="border-yellow-400">Features</HoverUnder>
 
@@ -40,4 +46,4 @@ It has **no package dependency** other than what NextJs is shipped with📦.
 
 ## <HoverUnder color="border-yellow-400">Technology Used</HoverUnder>
 
-1. [NextJs](https://nextjs.org/): As a Frontend framework.
+1. [Next.js](https://nextjs.org/): As a Frontend framework.

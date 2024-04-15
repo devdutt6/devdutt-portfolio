@@ -1,0 +1,17 @@
+---
+interface Props {
+  type: 'github' | 'internet',
+  link: string
+}
+import {Image} from 'astro:assets'
+const { type, link } = Astro.props;
+---
+
+<a class="p-2 rounded-lg ring-1 ring-neutral-700 hover:ring-neutral-500 flex justify-center items-center" href={link}>
+  {
+    type === "github" ?
+    <Image src="/github.svg" class="inline" width={24} height={24} alt="internet icon" />
+    :
+    <Image src="/openLink.svg" class="" width={24} height={24} alt="internet icon" />
+  }
+</a>

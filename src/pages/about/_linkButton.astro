@@ -12,13 +12,13 @@ const { text, link, target = '_self' } = Astro.props;
 ---
 
 <div
-  class='ring-1 ring-neutral-600 rounded-lg cursor-pointer group/name hover:-translate-y-1 tracking-wide'
+  class='ring-1 ring-neutral-600 rounded-lg cursor-pointer group/name hover:-translate-y-1 tracking-wide shadow-sm shadow-slate-500 hover:shadow-md transition-shadow'
 >
-  <a href={link} class='flex text-sm py-2 px-2' target={target}>
+  <a href={link} class='flex text-sm py-2 px-2 font-semibold' target={target}>
     {text}&nbsp;
     <Image
       src='/openLink.svg'
-      class='inline-block group-hover/name:scale-110'
+      class='inline-block group-hover/name:scale-150 transition-transform'
       width={18}
       height={18}
       alt='open link icon'

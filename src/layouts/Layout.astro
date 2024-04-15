@@ -9,6 +9,10 @@ import LogoHeader from '../components/header/LogoHeader.astro';
   <ViewTransitions />
   <link rel='icon' type='image/svg+xml' href='/logo.svg' />
   <style is:global>
+    ::selection {
+      color: rgb(250, 204, 21);
+      background-color: rgb(64 64 64);
+    }
     ::-webkit-scrollbar {
       width: 10px;
     }
@@ -27,7 +31,7 @@ import LogoHeader from '../components/header/LogoHeader.astro';
     }
   </style>
 </head>
-<body class='bg-slate-700'>
+<body class='bg-slate-900'>
   <LogoHeader />
   <slot />
   <Footer />

@@ -1,21 +1,49 @@
 ---
+import { getCollection } from 'astro:content';
 import FixedHeight from '../../components/FixedHeight.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import Layout from '../../layouts/Layout.astro';
 import LinkButton from './_linkButton.astro';
+const title = 'About Devdutt';
+const description =
+  'Learn more about Devdutt, a passionate software developer based in Gujarat, India. Discover my skills, experience, and interests in web development and problem-solving.';
+const personals = await getCollection('projects', ({ slug }) => {
+  return slug.startsWith('personal');
+});
+const teams = await getCollection('projects', ({ slug }) => {
+  return slug.startsWith('team');
+});
+const personalProjects = personals.map(({ slug, data }) => {
+  return { slug: slug, name: data.projectName };
+});
+const teamProjects = teams.map(({ slug, data }) => {
+  return { slug: slug, name: data.projectName };
+});
 ---
 
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width' />
+  <link rel='icon' type='image/svg+xml' href='/logo.svg' />
+  <title>{title}</title>
+  <meta name='description' content={description} />
+  <meta property='og:title' content={title} />
+  <meta property='og:description' content={description} />
+  <meta property='twitter:card' content='summary_large_image' />
+</head>
 <Layout>
   <FixedHeight color='bg-neutral-900' />
   <div class='bg-neutral-900'>
     <div class='lg:max-w-5xl max-w-2xl px-4 mx-auto space-y-4'>
-      <div class='relative text-6xl font-extrabold text-white'>AbOUT</div>
+      <!-- <div class='relative text-6xl font-extrabold animate-text'>AbOUT</div> -->
+      <PageHeader text='AbOUT' />
 
-      <div class='relative grid grid-cols-12 gap-4 text-white'>
+      <div class='relative grid grid-cols-12 gap-4 text-white pb-2'>
         <aside
-          class='col-span-12 lg:col-span-4 lg:sticky lg:top-[100px] h-fit group space-y-4'
+          class='col-span-12 lg:col-span-4 lg:sticky lg:top-[82px] h-fit group space-y-4'
         >
           <section
-            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 px-6 space-y-4 rounded-lg'
+            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 sm:p-6 space-y-4 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
           >
             <h2 class='border-neutral-700 text-3xl font-semibold border-b-2'>
               Software Developer
@@ -28,7 +56,7 @@ import LinkButton from './_linkButton.astro';
               my skill set. My USP would be I learn things quickly.
             </p>
 
-            <div class='flex items-center justify-end gap-2'>
+            <div class='flex items-center flex-wrap justify-end gap-2 pt-4'>
               <LinkButton
                 text='GitHub'
                 link='https://github.com/devdutt6'
@@ -39,47 +67,47 @@ import LinkButton from './_linkButton.astro';
             </div>
           </section>
           <section
-            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 px-6 space-y-2 rounded-lg'
+            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-6 space-y-2 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
           >
             <h3 class='border-neutral-700 text-2xl font-semibold border-b-2'>
               Table of Content
             </h3>
-            <div class='flex flex-col items-start'>
-              <button
-                class='text-white/90 clickEvent text-lg tracking-wide'
+            <ul class='flex flex-col items-start list-decimal ml-5'>
+              <li
+                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
                 data-related='education'
               >
-                1. Education
-              </button>
-              <button
-                class='text-white/90 clickEvent text-lg tracking-wide'
+                Education
+              </li>
+              <li
+                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
                 data-related='experience'
               >
-                2. Experience
-              </button>
-              <button
-                class='text-white/90 clickEvent text-lg tracking-wide'
-                data-related='skills'
-              >
-                3. Skills
-              </button>
-              <button
-                class='text-white/90 clickEvent text-lg tracking-wide'
-                data-related='projects'
-              >
-                4. Projects
-              </button>
-              <button
-                class='text-white/90 clickEvent text-lg tracking-wide'
+                Experience
+              </li>
+              <li
+                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
                 data-related='intrests'
               >
-                5. Personal Intrests
-              </button>
-            </div>
+                Skills
+              </li>
+              <li
+                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+                data-related='intrests'
+              >
+                Projects
+              </li>
+              <li
+                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+                data-related='intrests'
+              >
+                Personal Intrests
+              </li>
+            </ul>
           </section>
         </aside>
         <div
-          class='ring-1 ring-zinc-700 bg-neutral-950 lg:col-span-8 flex flex-col col-span-12 p-4 px-8 space-y-6 rounded-lg'
+          class='ring-1 ring-zinc-700 hover:ring-zinc-500 bg-neutral-950 lg:col-span-8 flex flex-col col-span-12 p-6 space-y-6 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
         >
           <section
             class='[&>p]:text-white/70 [&>p]:text-sm [&>h2]:border-b-2 [&>h2]:border-neutral-700 leading-6'
@@ -148,7 +176,7 @@ import LinkButton from './_linkButton.astro';
             </p>
             <p class='text-white/80 tracking-wide'>
               <span class='font-bold tracking-wide'>Languages:</span> JavaScript/TypeScript,
-              C++ (for DSA), Go, Rust, Python
+              C++ (for DSA)
             </p>
           </section>
 
@@ -156,8 +184,40 @@ import LinkButton from './_linkButton.astro';
             class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
           >
             <h2 class='mb-2 text-3xl font-semibold' id='intrests'>Projects</h2>
-            <p><span class='font-bold tracking-wide'>Personal:</span></p>
-            <p><span class='font-bold tracking-wide'>Team:</span></p>
+            <p>
+              <span class='font-bold tracking-wide'>Personal: </span>{
+                personalProjects.map((project, index) => {
+                  return (
+                    <>
+                      <a
+                        href={`/projects/${project.slug}`}
+                        class='hover:underline'
+                      >
+                        {project.name}
+                      </a>
+                      {index < personalProjects.length - 1 ? ' ,' : ''}{' '}
+                    </>
+                  );
+                })
+              }
+            </p>
+            <p>
+              <span class='font-bold tracking-wide'>Team: </span>{
+                teamProjects.map((project, index) => {
+                  return (
+                    <>
+                      <a
+                        href={`/projects/${project.slug}`}
+                        class='hover:underline'
+                      >
+                        {project.name}
+                      </a>
+                      {index < teamProjects.length - 1 ? ' ,' : ''}{' '}
+                    </>
+                  );
+                })
+              }
+            </p>
           </section>
 
           <section
@@ -196,4 +256,5 @@ import LinkButton from './_linkButton.astro';
       scrollToElement?.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
   </script>
+  <link href='/scrollbar.css' rel='stylesheet' />
 </Layout>

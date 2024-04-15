@@ -7,9 +7,12 @@ orderNumber: 100
 
 import { Image } from 'astro:assets';
 import HoverUnder from '../../../components/HoverUnder.astro';
+import LinkProject from '../../../components/LinkProject.astro';
 import TagLook from '../../../components/TagLook.astro';
 
 # <HoverUnder color='border-yellow-400' class="border-yellow-400" >Discord Bot</HoverUnder>
+
+<LinkProject github={frontmatter.githubLink} />
 
 The discord bot🤖 is a command chat bot created for and on [<Image src="/discord.svg" alt="discord icon" width={16} height={16} class="inline-block" /> discord](https://discord.com/) platform.
 
@@ -46,8 +49,8 @@ So I have created a **time tracker, task management** type daily **office utilit
 
 ## <HoverUnder color='border-yellow-400' class="border-yellow-400" >Technology Used</HoverUnder>
 
-1. [NodeJs](https://nodejs.org/en): Runtime for backend command handeling
+1. [Node.js](https://nodejs.org/en): Runtime for backend command handeling
 2. [DiscordJs](https://discord.js.org/): package for using discords provided APIs
-3. [node-cron](https://www.npmjs.com/package/node-cron): package to schedule cron jobs on NodeJs
+3. [node-cron](https://www.npmjs.com/package/node-cron): package to schedule cron jobs on Node.js
 4. [MongoDB](https://www.mongodb.com/): No-Sql database
 5. [Luxon](https://moment.github.io/luxon/#/): a package for date utils functions

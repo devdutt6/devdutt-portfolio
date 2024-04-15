@@ -18,8 +18,8 @@ const { content: Content, data } = Astro.props;
     <meta charset='UTF-8' />
     <meta name='description' content={data.shortSummary} />
     <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <title>{data.projectName || 'Devdutt/Blog'}</title>
+    <link rel='icon' type='image/svg+xml' href='/logo.svg' />
+    <title>{`${data.projectName} | Personal Project`}</title>
     <meta property='og:title' content={data.projectName} />
     <meta property='og:description' content={data.shortSummary} />
     <meta property='og:type' content='article' />
@@ -31,10 +31,10 @@ const { content: Content, data } = Astro.props;
       }
     </style>
   </head>
-  <body class='bg-slate-700'>
+  <body class='bg-slate-900'>
     <LogoHeader />
-    <FixedHeight color='bg-slate-700' />
-    <FixedHeight color='bg-slate-700' />
+    <FixedHeight color='bg-slate-900' />
+    <FixedHeight color='bg-slate-900' />
     <FixedHeight color='bg-neutral-900' />
 
     <div class='bg-neutral-900 px-4 md:p-0'>

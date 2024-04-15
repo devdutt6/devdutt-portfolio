@@ -7,9 +7,15 @@ orderNumber: 100
 ---
 
 import HoverUnder from '../../../components/HoverUnder.astro';
+import LinkProject from '../../../components/LinkProject.astro';
 import TagLook from '../../../components/TagLook.astro';
 
 # <HoverUnder color="border-yellow-400">Kathanak</HoverUnder>
+
+<LinkProject
+  github={frontmatter.githubLink}
+  website={frontmatter.liveWebsiteLink}
+/>
 
 [Kathanak](https://card-demo-64li.vercel.app/) is a social media📱 kinda website on which one can create a post and others can react😁, comment🌬️ and even reply↩️ on others comments with support of notifications🔔 and scheduling⏳ the post.
 
@@ -36,14 +42,14 @@ Technically it has features like <TagLook>debounce</TagLook>, <TagLook>paginatio
 
 ## <HoverUnder color="border-yellow-400">Technology</HoverUnder>
 
-- [NextJs](https://nextjs.org/): As a Frontend Framework (Latest App Router)
+- [Next.js](https://nextjs.org/): As a Frontend Framework (Latest App Router)
 - [Tailwind](https://tailwindcss.com/): Apply stylings with utility class names
 - [Tiptap](https://tiptap.dev/): Package for Headless WYSIWYG richtext editor
 - [Luxon](https://moment.github.io/luxon/#/): Package for Date utility functions
-- [NodeJs](https://nodejs.org/en): Runtime for backend server
-- [ExpressJs](https://expressjs.com/): Package for creating server and handeling REST apis
+- [Node.js](https://nodejs.org/en): Runtime for backend server
+- [Express.js](https://expressjs.com/): Package for creating server and handeling REST apis
 - [MongoDB](https://www.mongodb.com/): No-SQL database
 - [FireBase](https://firebase.google.com/): Real-time notifications
 - [S3](https://aws.amazon.com/pm/serv-s3/): File storage on cloud
-- [NextAuth](https://next-auth.js.org/): Package for authentication recommended way by NextJs
+- [NextAuth](https://next-auth.js.org/): Package for authentication recommended way by Next.js
 - [React-hook-form](https://react-hook-form.com/): Package for form handeling
