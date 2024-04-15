@@ -38,8 +38,7 @@ const {
 } = data;
 ---
 
-<!doctype html>
-<html lang='en'>
+<html>
   <head>
     <ViewTransitions />
     <meta charset='UTF-8' />
@@ -56,25 +55,6 @@ const {
     <meta property='og:published_time' content={og_publishedOn} />
     <meta property='twitter:card' content='summary_large_image' />
     <meta property='article:published_time' content={og_publishedOn} />
-    <style is:global>
-      ::selection {
-        color: rgb(250, 204, 21);
-        background-color: rgb(64 64 64);
-      }
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #888;
-        border-radius: 5px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #555;
-      }
-    </style>
   </head>
   <Layout>
     <FixedHeight color='bg-slate-900' />
@@ -91,7 +71,9 @@ const {
 
     <FixedHeight color='bg-neutral-900' />
     <FixedHeight color='bg-neutral-900' />
+    <script>
+      import '../../scripts/backButton.js';
+      import '../../scripts/shareButton.js';
+    </script>
   </Layout>
-
-
 </html>

@@ -17,25 +17,26 @@ const arr = Object.entries(data).map(([name, value]) => {
 });
 const first = arr.slice(0, len / 2);
 const second = arr.slice(len / 2);
-const title = "Skills | Devdutt"
-const description = "Explore Devdutt's skills in web technologies, programming languages, cloud services, and more. See how I can contribute to your projects."
+const title = 'Skills | Devdutt';
+const description =
+  "Explore Devdutt's skills in web technologies, programming languages, cloud services, and more. See how I can contribute to your projects.";
 ---
 
 <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/logo.svg' />
-    <title>{title}</title>
-    <meta name='description' content={description} />
-    <meta property='og:title' content={title} />
-    <meta property='og:description' content={description} />
-    <meta property='twitter:card' content='summary_large_image' />
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width' />
+  <link rel='icon' type='image/svg+xml' href='/logo.svg' />
+  <title>{title}</title>
+  <meta name='description' content={description} />
+  <meta property='og:title' content={title} />
+  <meta property='og:description' content={description} />
+  <meta property='twitter:card' content='summary_large_image' />
 </head>
 <Layout>
   <FixedHeight color='bg-neutral-900' />
   <div class='bg-neutral-900'>
     <div class='max-w-3xl p-4 mx-auto space-y-4'>
-      <PageHeader text="SKillS" />
+      <PageHeader text='SKillS' />
       <div class='md:grid-cols-2 grid grid-cols-1 gap-4 mx-auto'>
         <div class='flex flex-col gap-6'>
           {
@@ -59,10 +60,10 @@ const description = "Explore Devdutt's skills in web technologies, programming l
         </div>
       </div>
     </div>
-    <!-- <div class='flex items-center justify-start max-w-3xl px-3 py-4 mx-auto'>
-      <BackButton />
-    </div> -->
   </div>
   <FixedHeight color='bg-neutral-900' />
   <link href='/scrollbar.css' rel='stylesheet' />
+  <script>
+    import '../../scripts/drawer.js';
+  </script>
 </Layout>

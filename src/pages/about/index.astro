@@ -244,17 +244,7 @@ const teamProjects = teams.map(({ slug, data }) => {
   <FixedHeight color='bg-neutral-900' />
 
   <script>
-    const clickAbles = document.querySelectorAll(`.clickEvent`);
-    clickAbles.forEach((ele) => {
-      ele.addEventListener('click', () => {
-        // @ts-ignore
-        scrollTo(ele.dataset.related);
-      });
-    });
-    function scrollTo(id: string) {
-      const scrollToElement = document.querySelector(`#${id}`);
-      scrollToElement?.scrollIntoView({ block: 'center', behavior: 'smooth' });
-    }
+    import '../../scripts/aboutNavigator.js';
   </script>
   <link href='/scrollbar.css' rel='stylesheet' />
 </Layout>
