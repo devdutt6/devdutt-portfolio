@@ -9,11 +9,12 @@
   </div>
   <button
     class='bg-neutral-900 relative flex items-center justify-center h-full px-3 py-2 text-lg text-white rounded-lg outline-none'
-    id='back'>&#8592; Back</button
-  >
+    id='back'
+    >&#8592; Back
+  </button>
 </div>
 
-<script>
+<script is:inline>
   const btn = document.querySelector('#back');
   btn?.addEventListener('click', belowfunction);
   function belowfunction() {

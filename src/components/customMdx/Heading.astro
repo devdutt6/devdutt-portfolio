@@ -15,9 +15,10 @@ import ShareButton from '../SocialButton/ShareButton.astro';
   <ShareButton />
 </div>
 <script is:inline>
-  const backButton = document.querySelector('.back');
-  backButton?.addEventListener('click', () => {
-    history.go(-1);
+  document.querySelectorAll('.back').forEach((ele) => {
+    ele?.addEventListener('click', () => {
+      history.go(-1);
+    });
   });
 </script>
 

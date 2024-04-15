@@ -1,19 +1,19 @@
 ---
 interface Props {
-  justification: "justify-start" | "justify-end";
+  justification: 'justify-start' | 'justify-end';
   image: string;
   position: string;
 }
-const { justification, image, position } = Astro.props;
+const { justification, image } = Astro.props;
 ---
 
 <div class=`flex ${justification} items-center gap-8`>
   <div class='w-[200px] h-[200px] overflow-hidden'>
     <img
       src={image}
-      alt={"Image"}
+      alt={'Image'}
       class='object-none rounded-lg'
-      style={{ objectPosition: "50% 50%" }}
+      style={{ objectPosition: '50% 50%' }}
     />
   </div>
   <section class=''>

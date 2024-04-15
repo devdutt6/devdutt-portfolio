@@ -13,7 +13,7 @@ const { projects, classNames = '' } = Astro.props;
   class={`list-none text-white text-lg tracking-wider leading-9 ${classNames}`}
 >
   {
-    projects.map(({ id, slug }) => {
+    projects.map(({ slug }) => {
       return (
         <li>
           <a
