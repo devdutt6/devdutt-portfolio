@@ -1,14 +1,13 @@
 ---
-import { Image } from 'astro:assets';
 import ShareButton from '../SocialButton/ShareButton.astro';
 ---
 
 <div class='relative flex justify-between cursor-default group/head'>
-  <div
+  <!-- <div
     class='absolute -translate-x-12 translate-y-1 opacity-0 group-hover/head:opacity-100 text-white h-[50%] not-prose transition-transform duration-500 cursor-pointer back'
   >
     <Image src='/back.svg' width={50} height={50} alt='back button icon' />
-  </div>
+  </div> -->
   <h1>
     <slot />
   </h1>
