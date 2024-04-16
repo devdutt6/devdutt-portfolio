@@ -15,8 +15,6 @@ The [blog](https://devdutt-portfolio.vercel.app/blogs) route in this website is 
 - [TailwindCSS](https://tailwindcss.com/) for styling.
 - [MDX](https://mdxjs.com/)
 
-<em>The website is build by me from the scratch, its sad that I had to clarify this because some of my friends asked me if I picked template from somewhere.</em>
-
 Checkout the projects I created and contributed in [here](https://devdutt-portfolio.vercel.app/projects) and feel free to drop a dm
 on any of my social handles.
 
