@@ -21,6 +21,10 @@ const { content: Content, data } = Astro.props;
     <link rel='icon' type='image/svg+xml' href='/logo.svg' />
     <title>{`${data.projectName} | Personal Project`}</title>
     <meta property='og:title' content={data.projectName} />
+    <meta
+      property='og:image'
+      content='https://devdutt-portfolio.vercel.app/pc.png'
+    />
     <meta property='og:description' content={data.shortSummary} />
     <meta property='og:type' content='article' />
     <meta property='og:author' content={'devdutt'} />
