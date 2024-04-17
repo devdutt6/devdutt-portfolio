@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogCard from '../../components/BlogCard/BlogCard.astro';
-import FixedHeight from '../../components/FixedHeight.astro';
-import PageHeader from '../../components/PageHeader.astro';
+import BlogCard from './_components/_blogCard.astro';
+import FixedHeight from '../_components/_fixedHeight.astro';
+import PageHeader from '../_components/_pageTitle.astro';
 import Layout from '../../layouts/MainLayout.astro';
 
 const blogPosts = await getCollection('blog');
