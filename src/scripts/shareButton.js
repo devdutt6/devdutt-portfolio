@@ -1,6 +1,6 @@
 document.querySelector('#share')?.addEventListener('click', (_) => {
   const span = document.querySelector('#share span');
-  let url = window.location.href;
+  const url = window.location.href;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(url);
     if (span) span.textContent = 'Copied!';
