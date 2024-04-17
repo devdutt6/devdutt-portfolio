@@ -40,7 +40,9 @@ const skills = [
   <section
     class='[&>p]:text-white/70 [&>p]:text-sm [&>h2]:border-b-2 [&>h2]:border-neutral-700 leading-6'
   >
-    <h2 class='mb-2 text-3xl font-semibold' id='education'>Education</h2>
+    <h2 class='mb-2 text-3xl font-semibold' data-education-element>
+      Education
+    </h2>
     <p>
       I hold a degree in <strong>Computer Science</strong> and actively participated
       in hackathons during my university years, honing my problem-solving skills
@@ -52,7 +54,9 @@ const skills = [
   <section
     class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
   >
-    <h2 class='mb-2 text-3xl font-semibold' id='experience'>Experience</h2>
+    <h2 class='mb-2 text-3xl font-semibold' data-experience-element>
+      Experience
+    </h2>
     <h3>Internship</h3>
     <p>Aug, 2021 - Jan, 2022 : PedalsUp</p>
     <h3>Software Development Engineer</h3>
@@ -67,7 +71,7 @@ const skills = [
   <section
     class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
   >
-    <h2 class='mb-2 text-3xl font-semibold' id='skills'>Skills</h2>
+    <h2 class='mb-2 text-3xl font-semibold' data-skills-element>Skills</h2>
     {
       skills.map((skill) => (
         <p class='text-white/80 tracking-wide'>
@@ -82,7 +86,7 @@ const skills = [
   <section
     class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
   >
-    <h2 class='mb-2 text-3xl font-semibold' id='projects'>Projects</h2>
+    <h2 class='mb-2 text-3xl font-semibold' data-projects-element>Projects</h2>
     <p>
       <span class='font-bold tracking-wide'>Personal: </span>{
         personalProjects.map((project, index) => (
@@ -113,7 +117,7 @@ const skills = [
   <section
     class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
   >
-    <h2 class='mb-2 text-3xl font-semibold' id='intrests'>
+    <h2 class='mb-2 text-3xl font-semibold' data-intrests-element>
       Personal Interests
     </h2>
     <p>

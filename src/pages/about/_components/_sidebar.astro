@@ -38,34 +38,46 @@ import LinkButton from './_linkButton.astro';
     <ul class='flex flex-col items-start list-decimal ml-5'>
       <li
         class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-        data-related='education'
+        data-related='data-education-element'
       >
         Education
       </li>
       <li
         class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-        data-related='experience'
+        data-related='data-experience-element'
       >
         Experience
       </li>
       <li
         class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-        data-related='skills'
+        data-related='data-skills-element'
       >
         Skills
       </li>
       <li
         class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-        data-related='projects'
+        data-related='data-projects-element'
       >
         Projects
       </li>
       <li
         class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-        data-related='intrests'
+        data-related='data-intrests-element'
       >
         Personal Intrests
       </li>
     </ul>
   </section>
 </aside>
+<script is:inline>
+  document.querySelectorAll(`[data-related]`).forEach((ele) => {
+    const clickedOn = ele.dataset.related;
+    ele.addEventListener('click', () => {
+      const scrollToElement = document.querySelector(`[${clickedOn}]`);
+      scrollToElement?.scrollIntoView({
+        block: 'center',
+        behavior: 'smooth',
+      });
+    });
+  });
+</script>

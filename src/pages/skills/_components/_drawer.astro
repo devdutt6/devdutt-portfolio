@@ -8,15 +8,7 @@ interface Props {
 }
 
 const { categoryTitle: title, values } = Astro.props;
-const [id, parentId, roundedId, iconId, enlargeId, neonId, transparentId] = [
-  title,
-  'parent' + title,
-  'rounded' + title,
-  'icon' + title,
-  'enlarge' + title,
-  'neon' + title,
-  'transparent' + title,
-];
+const id = title;
 const titlizeTitle = (title: string) => {
   return title
     .split('')
@@ -29,25 +21,25 @@ const titlizeTitle = (title: string) => {
 };
 ---
 
-<div class='relative bg-transparent' id={parentId}>
+<div class='relative bg-transparent' data-parent-id={id}>
   <div
     class='absolute inset-0 w-full h-full bg-gradient-to-br from-yellow-200 via-green-500 to-cyan-600 rounded-lg'
-    id={neonId}
+    data-neon-id={id}
   >
   </div>
   <div
     class='flex items-center relative transition-colors justify-between p-4 text-white bg-neutral-900 rounded-t-xl rounded-b-xl ring-1 ring-offset-transparent'
-    id={roundedId}
+    data-rounded-id={id}
   >
     <p
       class='tracking-wide bg-gradient-to-r from-yellow-200 via-green-500 to-cyan-600 bg-clip-text font-semibold text-lg'
-      id={transparentId}
+      data-transparent-id={id}
     >
       {titlizeTitle(title)}
     </p>
     <div
       class='flex transform transition-transform duration-700 -rotate-90'
-      id={iconId}
+      data-icon-id={id}
     >
       <Image src='/arrow.svg' height={24} width={24} alt='drop icon' />
     </div>
@@ -55,7 +47,7 @@ const titlizeTitle = (title: string) => {
   <custom-component data-ider={id} data-close='true' class='bg-gray-400'
   ></custom-component>
   <div
-    id={enlargeId}
+    data-enlarge-id={id}
     class='transition-all relative duration-700 transform hidden scale-y-0 origin-top bg-neutral-900 rounded-b-xl overflow-hidden'
   >
     <ul class='list-none px-4 pb-2 tracking-wider'>

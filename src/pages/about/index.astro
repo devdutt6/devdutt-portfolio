@@ -29,18 +29,4 @@ const description =
     </div>
   </div>
   <FixedHeight color='bg-neutral-900' />
-
-  <script is:inline async>
-    document.querySelectorAll(`.clickEvent`).forEach((ele) => {
-      ele.addEventListener('click', () => {
-        const scrollToElement = document.querySelector(
-          `#${ele.dataset.related}`
-        );
-        scrollToElement?.scrollIntoView({
-          block: 'center',
-          behavior: 'smooth',
-        });
-      });
-    });
-  </script>
 </Layout>
