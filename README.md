@@ -6,8 +6,8 @@ The [blog](https://devdutt-portfolio.vercel.app/blogs) route in this website is 
 
 ## Here are some preview images
 
-![Preview In Desktop devices](/public/pc.png)
-![Preview In Mobile devices](/public/mobile.png)
+![Preview In Desktop devices](/public/open/pc.png)
+![Preview In Mobile devices](/public/open/mobile.png)
 
 ### Technology
 
@@ -20,5 +20,5 @@ on any of my social handles.
 
 ---
 
-![Gmail](/public/gmail.svg) [Gmail](mailto:devduttchudasama1339@gmail.com?subject=Hey-there)
-![LinkedIn](/public/linkedin.svg) [LinkedIn](https://linkedin.com/in/devduttsinh)
+![Gmail](/public/socialIcons/gmail.svg) [Gmail](mailto:devduttchudasama1339@gmail.com?subject=Hey-there)
+![LinkedIn](/public/socialIcons/linkedin.svg) [LinkedIn](https://linkedin.com/in/devduttsinh)

@@ -8,28 +8,7 @@ import LogoHeader from '../components/header/LogoHeader.astro';
   <meta name='viewport' content='width=device-width' />
   <ViewTransitions />
   <link rel='icon' type='image/svg+xml' href='/logo.svg' />
-  <style is:global>
-    ::selection {
-      color: rgb(250, 204, 21);
-      background-color: rgb(64 64 64);
-    }
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+  <link href='/globals.css' rel='stylesheet' />
 </head>
 <body class='bg-slate-900'>
   <LogoHeader />

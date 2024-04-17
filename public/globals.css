@@ -20,6 +20,10 @@
   background: #555;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .animate-text {
   animation: gradient 6s ease-in-out infinite;
   background-clip: text !important;
