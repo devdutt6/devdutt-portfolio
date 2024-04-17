@@ -2,35 +2,21 @@
 import { getCollection } from 'astro:content';
 import FixedHeight from '../../components/FixedHeight.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../layouts/MainLayout.astro';
+import ProjectCard from './_projectCard.astro';
 
-const personalProjects = await getCollection('projects', ({ id }) => {
-  return id.startsWith('personal');
-});
-const teamProjects = await getCollection('projects', ({ id }) => {
-  return id.startsWith('team');
-});
+const projects = await getCollection('projects');
 const title = 'Projects | Devdutt';
 const description =
   "Browse through Devdutt's portfolio showcasing web development projects, applications, and software solutions. Get inspired and see what I can create for you.";
 ---
 
-<head>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width' />
-  <link rel='icon' type='image/svg+xml' href='/logo.svg' />
-  <title>{title}</title>
-  <meta name='description' content={description} />
-  <meta property='og:title' content={title} />
-  <meta
-    property='og:image'
-    content='https://devdutt-portfolio.vercel.app/open/pc.png'
-  />
-  <meta property='og:description' content={description} />
-  <meta property='twitter:card' content='summary_large_image' />
-  <link href='/globals.css' rel='stylesheet' />
-</head>
-<Layout>
+<Layout
+  pageTitle={title}
+  pageDescription={description}
+  ogTitle={title}
+  ogDescription={description}
+>
   <FixedHeight color='bg-neutral-900' />
 
   <div class='bg-neutral-900'>
@@ -40,23 +26,13 @@ const description =
         class='md:grid-cols-2 md:max-w-3xl grid max-w-md grid-cols-1 gap-4 mx-auto'
       >
         {
-          personalProjects.concat(teamProjects).map(({ slug, data }) => {
-            return (
-              <div class='group/parent flex flex-col'>
-                <a
-                  href={`projects/${slug}`}
-                  class='h-full p-4 group-hover/parent:-translate-y-1 ring-1 ring-zinc-700 hover:ring-zinc-500 flex flex-col justify-between rounded-lg'
-                >
-                  <div class='flex flex-col justify-center gap-4'>
-                    <h2 class='text-2xl font-semibold tracking-wide cursor-pointer inline-block relative before:content-[""] before:absolute before:bottom-0 before:w-full before:border-b-[1px] before:translate-y-1 before:scale-x-0 group-hover/parent:before:scale-x-100 before:transform before:duration-500 before:origin-right group-hover/parent:before:origin-left before:transition-transform transition-colors text-yellow-400'>
-                      {data.projectName}
-                    </h2>
-                    <p class='text-white/90 leading-6'>{data.shortSummary}</p>
-                  </div>
-                </a>
-              </div>
-            );
-          })
+          projects.map(({ slug, data }) => (
+            <ProjectCard
+              slug={`projects/${slug}`}
+              shortSummary={data.shortSummary}
+              projectName={data.projectName}
+            />
+          ))
         }
       </div>
     </div>

@@ -12,7 +12,10 @@ import TagLook from '../../../components/TagLook.astro';
 
 # <HoverUnder color="border-yellow-400">AOC template</HoverUnder>
 
-<LinkProject github={frontmatter.githubLink} website={frontmatter.liveWebsiteLink} />
+<LinkProject
+  github={frontmatter.githubLink}
+  website={frontmatter.liveWebsiteLink}
+/>
 
 **AOC** in AOCtemplate stand for [Advent of Code](https://adventofcode.com/) it is a website which hosts a coding hackathon at every year in the month🗓️ of october. It starts on 1️⃣<sup>st</sup> of october and ends on 31<sup>st</sup>.
 
@@ -31,11 +34,11 @@ With this CLI tool you can create your project folder and it will handel the fil
 
 This tool comes with two commands⌨️ <TagLook>aoc</TagLook> and other is <TagLook>aoc run</TagLook>.
 
-#### aoc
+\*\*aoc
 
 <TagLook>aoc</TagLook> takes **\<folder_name\>** as argument and generates two files `input.txt` and `solution.js`.
 
-#### aoc run
+**aoc run**
 
 <TagLook>aoc run</TagLook> command takes **\<separator\>** as argument and reads the input file then will parse it and then will pass the parse data to your written solution.
 

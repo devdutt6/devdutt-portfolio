@@ -1,8 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../layouts/MainLayout.astro';
+const title = 'Not Found 404 Page';
+const description = 'The page for catch all route if not handled in routing';
 ---
 
-<Layout>
+<Layout
+  pageTitle={title}
+  pageDescription={description}
+  ogTitle={title}
+  ogDescription={description}
+>
   <div
     class='h-[80vh] flex flex-col justify-center items-center bg-neutral-900 select-none relative'
   >

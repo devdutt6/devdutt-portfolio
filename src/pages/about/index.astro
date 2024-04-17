@@ -1,42 +1,20 @@
 ---
-import { getCollection } from 'astro:content';
 import FixedHeight from '../../components/FixedHeight.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import Layout from '../../layouts/Layout.astro';
-import LinkButton from './_linkButton.astro';
+import Layout from '../../layouts/MainLayout.astro';
+import Sidebar from './_sidebar.astro';
+import MainSection from './_mainSection.astro';
 const title = 'About Devdutt';
 const description =
   'Learn more about Devdutt, a passionate software developer based in Gujarat, India. Discover my skills, experience, and interests in web development and problem-solving.';
-const personals = await getCollection('projects', ({ slug }) => {
-  return slug.startsWith('personal');
-});
-const teams = await getCollection('projects', ({ slug }) => {
-  return slug.startsWith('team');
-});
-const personalProjects = personals.map(({ slug, data }) => {
-  return { slug: slug, name: data.projectName };
-});
-const teamProjects = teams.map(({ slug, data }) => {
-  return { slug: slug, name: data.projectName };
-});
 ---
 
-<head>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width' />
-  <link rel='icon' type='image/svg+xml' href='/logo.svg' />
-  <title>{title}</title>
-  <meta name='description' content={description} />
-  <meta property='og:title' content={title} />
-  <meta
-    property='og:image'
-    content='https://devdutt-portfolio.vercel.app/open/pc.png'
-  />
-  <meta property='og:description' content={description} />
-  <meta property='twitter:card' content='summary_large_image' />
-  <link href='/globals.css' rel='stylesheet' />
-</head>
-<Layout>
+<Layout
+  pageTitle={title}
+  pageDescription={description}
+  ogTitle={title}
+  ogDescription={description}
+>
   <FixedHeight color='bg-neutral-900' />
   <div class='bg-neutral-900'>
     <div class='lg:max-w-5xl max-w-2xl px-4 mx-auto space-y-4'>
@@ -44,205 +22,8 @@ const teamProjects = teams.map(({ slug, data }) => {
       <PageHeader text='AbOUT' />
 
       <div class='relative grid grid-cols-12 gap-4 text-white pb-2'>
-        <aside
-          class='col-span-12 lg:col-span-4 lg:sticky lg:top-[82px] h-fit group space-y-4'
-        >
-          <section
-            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 sm:p-6 space-y-4 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
-          >
-            <h2 class='border-neutral-700 text-3xl font-semibold border-b-2'>
-              Software Developer
-            </h2>
-            <p class='text-white/70 text-sm leading-5 tracking-wide'>
-              Hello! I'm Devdutt, a passionate software developer based in
-              Gujarat, India, specializing in MERN stack web development and
-              daily problem-solving in data structures and algorithms (DSA). I
-              thrive on tackling challenging tasks and am always eager to expand
-              my skill set. My USP would be I learn things quickly.
-            </p>
-
-            <div class='flex items-center flex-wrap justify-end gap-2 pt-4'>
-              <LinkButton
-                text='GitHub'
-                link='https://github.com/devdutt6'
-                target='_blank'
-              />
-              <LinkButton text='Skills' link='/skills' />
-              <LinkButton text='Projects' link='/projects' />
-            </div>
-          </section>
-          <section
-            class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-6 space-y-2 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
-          >
-            <h3 class='border-neutral-700 text-2xl font-semibold border-b-2'>
-              Table of Content
-            </h3>
-            <ul class='flex flex-col items-start list-decimal ml-5'>
-              <li
-                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-                data-related='education'
-              >
-                Education
-              </li>
-              <li
-                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-                data-related='experience'
-              >
-                Experience
-              </li>
-              <li
-                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-                data-related='skills'
-              >
-                Skills
-              </li>
-              <li
-                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-                data-related='projects'
-              >
-                Projects
-              </li>
-              <li
-                class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
-                data-related='intrests'
-              >
-                Personal Intrests
-              </li>
-            </ul>
-          </section>
-        </aside>
-        <div
-          class='ring-1 ring-zinc-700 hover:ring-zinc-500 bg-neutral-950 lg:col-span-8 flex flex-col col-span-12 p-6 space-y-6 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
-        >
-          <section
-            class='[&>p]:text-white/70 [&>p]:text-sm [&>h2]:border-b-2 [&>h2]:border-neutral-700 leading-6'
-          >
-            <h2 class='mb-2 text-3xl font-semibold' id='education'>
-              Education
-            </h2>
-            <p>
-              I hold a degree in <strong>Computer Science</strong> and actively participated
-              in hackathons during my university years, honing my problem-solving
-              skills and teamwork.
-            </p>
-          </section>
-
-          <section
-            class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
-          >
-            <h2 class='mb-2 text-3xl font-semibold' id='experience'>
-              Experience
-            </h2>
-            <h4>Internship</h4>
-            <p>Aug, 2021 - Jan, 2022 : PedalsUp</p>
-            <h4>Software Development Engineer</h4>
-            <p>Feb, 2022 - May, 2023 : PedalsUp</p>
-            <h4>Software Development Engineer</h4>
-            <p>Jun, 2022 - Oct, 2023 : OpenXcell</p>
-            <h4>MERN Stack Developer</h4>
-            <p>Nov, 2022 - : Evolution</p>
-          </section>
-
-          <section
-            class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
-          >
-            <h2 class='mb-2 text-3xl font-semibold' id='skills'>Skills</h2>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Frontend:</span> React, Next.js,
-              Astro.js, Svelte.js
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Backend:</span> Node.js, MongoDB,
-              PostgreSQL
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>APIs:</span> REST, WebSocket,
-              GraphQL, Event-based architecture (Kafka)
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Cloud Services:</span> AWS (S3,
-              EC2, Lambda)
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Tools & Practices:</span> Docker,
-              Version Control, Postman(testing and monitoring), Swagger, VSCode(like
-              a pro)
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Testing:</span> Jest, Vitest
-              (automated unit testing)
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Architecture:</span> Microservices,
-              OOP principles (SOLID)
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Styling:</span> Tailwind CSS
-            </p>
-            <p class='text-white/80 tracking-wide'>
-              <span class='font-bold tracking-wide'>Languages:</span> JavaScript/TypeScript,
-              C++ (for DSA)
-            </p>
-          </section>
-
-          <section
-            class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
-          >
-            <h2 class='mb-2 text-3xl font-semibold' id='projects'>Projects</h2>
-            <p>
-              <span class='font-bold tracking-wide'>Personal: </span>{
-                personalProjects.map((project, index) => {
-                  return (
-                    <>
-                      <a
-                        href={`/projects/${project.slug}`}
-                        class='hover:underline'
-                      >
-                        {project.name}
-                      </a>
-                      {index < personalProjects.length - 1 ? ' ,' : ''}{' '}
-                    </>
-                  );
-                })
-              }
-            </p>
-            <p>
-              <span class='font-bold tracking-wide'>Team: </span>{
-                teamProjects.map((project, index) => {
-                  return (
-                    <>
-                      <a
-                        href={`/projects/${project.slug}`}
-                        class='hover:underline'
-                      >
-                        {project.name}
-                      </a>
-                      {index < teamProjects.length - 1 ? ' ,' : ''}{' '}
-                    </>
-                  );
-                })
-              }
-            </p>
-          </section>
-
-          <section
-            class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
-          >
-            <h2 class='mb-2 text-3xl font-semibold' id='intrests'>
-              Personal Interests
-            </h2>
-            <p>
-              Outside of coding, I'm a sports enthusiast with a love for
-              volleyball. I also enjoy immersing myself in movies and anime.
-              Currently, I'm learning Japanese on Duolingo with a streak of over
-              250 days!
-            </p>
-            <p>
-              I'm dedicated to crafting clean, efficient code and documenting my
-              work using tools like JSDoc for clear functional documentation.
-            </p>
-          </section>
-        </div>
+        <Sidebar />
+        <MainSection />
       </div>
     </div>
   </div>

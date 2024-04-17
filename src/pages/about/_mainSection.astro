@@ -1,0 +1,129 @@
+---
+import { getCollection } from 'astro:content';
+
+const personals = await getCollection('projects', ({ slug }) => {
+  return slug.startsWith('personal');
+});
+const teams = await getCollection('projects', ({ slug }) => {
+  return slug.startsWith('team');
+});
+const personalProjects = personals.map(({ slug, data }) => {
+  return { slug: slug, name: data.projectName };
+});
+const teamProjects = teams.map(({ slug, data }) => {
+  return { slug: slug, name: data.projectName };
+});
+const skills = [
+  { title: 'Frontend:', values: ' React, Next.js, Astro.js, Svelte.js' },
+  { title: 'Backend:', values: ' Node.js, MongoDB, PostgreSQL' },
+  {
+    title: 'APIs:',
+    values: ' REST, WebSocket, GraphQL, Event-based architecture (Kafka)',
+  },
+  { title: 'Cloud Services:', values: ' AWS (S3, EC2, Lambda)' },
+  {
+    title: 'Tools & Practices:',
+    values:
+      ' Docker, Version Control, Postman(testing and monitoring), Swagger, VSCode(like a pro)',
+  },
+  { title: 'Testing:', values: ' Jest, Vitest (automated unit testing)' },
+  { title: 'Architecture:', values: ' Microservices, OOP principles (SOLID)' },
+  { title: 'Styling:', values: ' Tailwind CSS' },
+  { title: 'Languages:', values: ' JavaScript/TypeScript, C++ (for DSA)' },
+];
+---
+
+<div
+  class='ring-1 ring-zinc-700 hover:ring-zinc-500 bg-neutral-950 lg:col-span-8 flex flex-col col-span-12 p-6 space-y-6 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
+>
+  <!-- NOTE - Education -->
+  <section
+    class='[&>p]:text-white/70 [&>p]:text-sm [&>h2]:border-b-2 [&>h2]:border-neutral-700 leading-6'
+  >
+    <h2 class='mb-2 text-3xl font-semibold' id='education'>Education</h2>
+    <p>
+      I hold a degree in <strong>Computer Science</strong> and actively participated
+      in hackathons during my university years, honing my problem-solving skills
+      and teamwork.
+    </p>
+  </section>
+
+  <!-- NOTE - Experience -->
+  <section
+    class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
+  >
+    <h2 class='mb-2 text-3xl font-semibold' id='experience'>Experience</h2>
+    <h3>Internship</h3>
+    <p>Aug, 2021 - Jan, 2022 : PedalsUp</p>
+    <h3>Software Development Engineer</h3>
+    <p>Feb, 2022 - May, 2023 : PedalsUp</p>
+    <h3>Software Development Engineer</h3>
+    <p>Jun, 2022 - Oct, 2023 : OpenXcell</p>
+    <h3>MERN Stack Developer</h3>
+    <p>Nov, 2022 - : Evolution</p>
+  </section>
+
+  <!-- NOTE - Skills -->
+  <section
+    class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
+  >
+    <h2 class='mb-2 text-3xl font-semibold' id='skills'>Skills</h2>
+    {
+      skills.map((skill) => (
+        <p class='text-white/80 tracking-wide'>
+          <span class='font-bold tracking-wide'>{skill.title}</span>
+          {skill.values}
+        </p>
+      ))
+    }
+  </section>
+
+  <!-- NOTE - Projects -->
+  <section
+    class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
+  >
+    <h2 class='mb-2 text-3xl font-semibold' id='projects'>Projects</h2>
+    <p>
+      <span class='font-bold tracking-wide'>Personal: </span>{
+        personalProjects.map((project, index) => (
+          <>
+            <a href={`/projects/${project.slug}`} class='hover:underline'>
+              {project.name}
+            </a>
+            {index < personalProjects.length - 1 ? ' ,' : ''}{' '}
+          </>
+        ))
+      }
+    </p>
+    <p>
+      <span class='font-bold tracking-wide'>Team: </span>{
+        teamProjects.map((project, index) => (
+          <>
+            <a href={`/projects/${project.slug}`} class='hover:underline'>
+              {project.name}
+            </a>
+            {index < teamProjects.length - 1 ? ' ,' : ''}{' '}
+          </>
+        ))
+      }
+    </p>
+  </section>
+
+  <!-- NOTE - Personal Intrests -->
+  <section
+    class='[&>h4]:text-xl tracking-wide [&>p]:text-white/70 [&>p]:text-sm [&>p]:mb-2 [&>h2]:border-b-2 [&>h2]:border-neutral-700'
+  >
+    <h2 class='mb-2 text-3xl font-semibold' id='intrests'>
+      Personal Interests
+    </h2>
+    <p>
+      Outside of coding, I'm a sports enthusiast with a love for volleyball. I
+      also enjoy immersing myself in movies and anime. Currently, I'm learning
+      Japanese on Duolingo with a streak of over 250 days!
+    </p>
+    <p>
+      I'm dedicated to crafting clean, efficient code and documenting my work
+      using tools like JSDoc for clear functional documentation.
+    </p>
+  </section>
+</div>

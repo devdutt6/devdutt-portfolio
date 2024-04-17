@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import shareButton from './share.svg';
 ---
 
@@ -11,11 +12,11 @@ import shareButton from './share.svg';
     class='bg-neutral-900 relative flex items-center justify-center h-full px-2 rounded-lg outline-none'
     id='share'
   >
-    <img
-      src={shareButton.src}
+    <Image
+      src={shareButton}
       alt='share icon'
-      width='24'
-      height='24'
+      width={24}
+      height={24}
       class='inline not-prose'
       style={{ margin: 0 }}
     />&nbsp;<span>Copy Link</span>

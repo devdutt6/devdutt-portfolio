@@ -1,0 +1,40 @@
+---
+
+---
+
+<pre
+  class='text-sm tracking-normal block font-mono font-normal overflow-y-auto'>
+<span class="text-blue-500">class</span> <span class="text-green-400">SDE</span> <span class="text-yellow-400">&lbrace;</span>
+  <span class="text-blue-500">constructor</span><span class="text-yellow-400">(</span><span class="text-blue-300">field</span>, <span class="text-blue-300">state</span><span class="text-yellow-400">)&lbrace;</span>
+    <span class="text-blue-500">this</span>.<span class="text-blue-300">expertIn</span> = <span class="text-blue-300">field</span>;
+    <span class='text-blue-500'>this</span>.<span class='text-blue-300'>basedFrom</span> = <span class='text-blue-300'>state</span>;
+  <span class='text-yellow-400'>&rbrace;</span>
+
+  <span class='text-yellow-200'>getIntroLine</span><span class='text-yellow-400'>()</span> <span class='text-yellow-400'>&lbrace;</span>
+    <span class='text-fuchsia-500'>return</span><span class='text-amber-500'> `A Software developer expert in <span class='text-yellow-400'>$&lbrace;</span><span class='text-blue-500'>this</span><span class="text-white">.</span><span class='text-blue-300'>expertIn</span><span class='text-yellow-400'>&rbrace;</span>
+    based from <span class='text-yellow-400'>$&lbrace;</span><span class='text-blue-500'>this</span><span class="text-white">.</span><span class='text-blue-300'>basedFrom</span><span class='text-yellow-400'>&rbrace;</span>`</span>;
+  <span class='text-yellow-400'>&rbrace;</span>
+<span class='text-yellow-400'>&rbrace;</span>
+
+<span class='text-blue-500'>const</span> <span class='text-blue-300'>devdutt</span> = <span class='text-blue-500'>new</span> <span class='text-green-400'>SDE</span><span class='text-yellow-400'>(</span><span class='text-amber-500'>"MERN stack"<span class="text-white">,</span> "Gujarat"</span><span class='text-yellow-400'>)</span>;
+<span class='text-blue-300'>console</span>.<span class='text-yellow-200'>log</span><span class='text-yellow-400'>(</span><span class='text-blue-300'>devdutt</span>.<span class='text-yellow-200'>getIntroLine</span><span class='text-yellow-400'>())</span>;
+<span class='text-green-500'>// &equals;&gt; A Software developer expert in MERN stack based
+  from Gujarat</span></pre>
+<style>
+  ::-webkit-scrollbar {
+    width: 4px !important;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>

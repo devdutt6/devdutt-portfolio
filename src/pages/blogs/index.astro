@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BlogCard from '../../components/BlogCard/BlogCard.astro';
 import FixedHeight from '../../components/FixedHeight.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import Layout from '../../layouts/Layout.astro';
+import Layout from '../../layouts/MainLayout.astro';
 
 const blogPosts = await getCollection('blog');
 const title = 'Blogs by Devdutt';
@@ -11,22 +11,12 @@ const description =
   'The collection of blogs, learnings, insightful things documented and posted by devdutt';
 ---
 
-<head>
-  <meta charset='UTF-8' />
-  <meta name='viewport' content='width=device-width' />
-  <link rel='icon' type='image/svg+xml' href='/logo.svg' />
-  <title>{title}</title>
-  <meta name='description' content={description} />
-  <meta property='og:title' content={title} />
-  <meta
-    property='og:image'
-    content='https://devdutt-portfolio.vercel.app/open/pc.png'
-  />
-  <meta property='og:description' content={description} />
-  <meta property='twitter:card' content='summary_large_image' />
-  <link href='/globals.css' rel='stylesheet' />
-</head>
-<Layout>
+<Layout
+  pageTitle={title}
+  pageDescription={description}
+  ogTitle={title}
+  ogDescription={description}
+>
   <FixedHeight color='bg-neutral-900' />
 
   <div class='bg-neutral-900'>

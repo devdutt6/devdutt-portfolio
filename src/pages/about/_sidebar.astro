@@ -1,0 +1,71 @@
+---
+import LinkButton from './_linkButton.astro';
+---
+
+<aside
+  class='col-span-12 lg:col-span-4 lg:sticky lg:top-[82px] h-fit group space-y-4'
+>
+  <section
+    class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-4 sm:p-6 space-y-4 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
+  >
+    <h2 class='border-neutral-700 text-3xl font-semibold border-b-2'>
+      Software Developer
+    </h2>
+    <p class='text-white/70 text-sm leading-5 tracking-wide'>
+      Hello! I'm Devdutt, a passionate software developer based in Gujarat,
+      India, specializing in MERN stack web development and daily
+      problem-solving in data structures and algorithms (DSA). I thrive on
+      tackling challenging tasks and am always eager to expand my skill set. My
+      USP would be I learn things quickly.
+    </p>
+
+    <div class='flex items-center flex-wrap justify-end gap-2 pt-4'>
+      <LinkButton
+        text='GitHub'
+        link='https://github.com/devdutt6'
+        target='_blank'
+      />
+      <LinkButton text='Skills' link='/skills' />
+      <LinkButton text='Projects' link='/projects' />
+    </div>
+  </section>
+  <section
+    class='bg-neutral-950 ring-1 ring-zinc-700 hover:ring-zinc-500 p-6 space-y-2 rounded-lg hover:shadow-none transition-shadow shadow-sm shadow-slate-500'
+  >
+    <h3 class='border-neutral-700 text-2xl font-semibold border-b-2'>
+      Table of Content
+    </h3>
+    <ul class='flex flex-col items-start list-decimal ml-5'>
+      <li
+        class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+        data-related='education'
+      >
+        Education
+      </li>
+      <li
+        class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+        data-related='experience'
+      >
+        Experience
+      </li>
+      <li
+        class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+        data-related='skills'
+      >
+        Skills
+      </li>
+      <li
+        class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+        data-related='projects'
+      >
+        Projects
+      </li>
+      <li
+        class='text-white/80 hover:underline clickEvent text-lg tracking-wide cursor-pointer'
+        data-related='intrests'
+      >
+        Personal Intrests
+      </li>
+    </ul>
+  </section>
+</aside>
