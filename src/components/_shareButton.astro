@@ -10,7 +10,7 @@ import shareButton from './_share.svg';
   </div>
   <button
     class='bg-neutral-900 relative flex items-center justify-center h-full px-2 rounded-lg outline-none'
-    id='share'
+    data-copy-button
   >
     <Image
       src={shareButton}
@@ -22,3 +22,24 @@ import shareButton from './_share.svg';
     />&nbsp;<span>Copy Link</span>
   </button>
 </div>
+<script is:inline async>
+  var btn = document.querySelector('[data-copy-button]');
+
+  btn.addEventListener('click', (clickedElement) => {
+    const span = clickedElement.currentTarget.children[1];
+    const url = window.location.href;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(url);
+      if (span) span.textContent = 'Copied!';
+      setTimeout(() => {
+        if (span) span.textContent = 'Copy Link';
+      }, 1500);
+    } else {
+      console.log('clipboard restricted');
+      if (span) span.textContent = 'Failed!';
+      setTimeout(() => {
+        if (span) span.textContent = 'Copy Link';
+      }, 1500);
+    }
+  });
+</script>
