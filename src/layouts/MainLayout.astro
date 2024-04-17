@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import LogoHeader from '../components/header/LogoHeader.astro';
-import Footer from '../components/footer.astro';
+import Header from './_components/header/index.astro';
+import Footer from './_components/footer/index.astro';
 
 interface Props {
   pageTitle: string;
@@ -53,7 +53,7 @@ const {
   </head>
 
   <body class='bg-slate-900'>
-    <LogoHeader />
+    <Header />
     <slot />
     <Footer />
   </body>

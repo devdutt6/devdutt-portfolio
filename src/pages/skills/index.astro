@@ -1,9 +1,9 @@
 ---
 import { getEntry } from 'astro:content';
-import FixedHeight from '../../components/FixedHeight.astro';
-import PageHeader from '../../components/PageHeader.astro';
+import DrawerColumn from './_components/_drawerColumn.astro';
+import FixedHeight from '../_components/_fixedHeight.astro';
+import PageHeader from '../_components/_pageTitle.astro';
 import Layout from '../../layouts/MainLayout.astro';
-import DrawerColumn from './_drawerColumn.astro';
 
 const { data } = await getEntry('skills', 'skills');
 

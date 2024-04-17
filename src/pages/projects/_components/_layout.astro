@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FixedHeight from '../../_components/_fixedHeight.astro';
+import MainLayout from '../../../layouts/MainLayout.astro';
+import ProseLayout from '../../../layouts/ProseLayout.astro';
+
+interface Props {
+  data: CollectionEntry<'projects'>['data'];
+  content: any;
+}
+const { content, data } = Astro.props;
+---
+
+<MainLayout
+  pageTitle={data.projectName}
+  pageDescription={data.shortSummary}
+  ogTitle={data.projectName}
+  ogDescription={data.shortSummary}
+>
+  <FixedHeight color='bg-neutral-900' />
+
+  <ProseLayout content={content} />
+
+  <FixedHeight color='bg-neutral-900' />
+  <script>
+    import '../../scripts/backButton.js';
+    import '../../scripts/shareButton.js';
+  </script>
+</MainLayout>
