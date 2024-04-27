@@ -91,7 +91,11 @@ const skills = [
       <span class='font-bold tracking-wide'>Personal: </span>{
         personalProjects.map((project, index) => (
           <>
-            <a href={`/projects/${project.slug}`} class='hover:underline'>
+            <a
+              href={`/projects/${project.slug}`}
+              class='hover:underline'
+              rel='prefetch'
+            >
               {project.name}
             </a>
             {index < personalProjects.length - 1 ? ' ,' : ''}{' '}
@@ -103,7 +107,11 @@ const skills = [
       <span class='font-bold tracking-wide'>Team: </span>{
         teamProjects.map((project, index) => (
           <>
-            <a href={`/projects/${project.slug}`} class='hover:underline'>
+            <a
+              href={`/projects/${project.slug}`}
+              class='hover:underline'
+              rel='prefetch'
+            >
               {project.name}
             </a>
             {index < teamProjects.length - 1 ? ' ,' : ''}{' '}

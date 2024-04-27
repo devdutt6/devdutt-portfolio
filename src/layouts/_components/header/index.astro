@@ -18,7 +18,7 @@ const links = [
   <nav class='flex justify-end gap-4 text-slate-50 text-lg font-semibold'>
     {
       links.map((obj) => (
-        <a href={obj.path}>
+        <a href={obj.path} rel='prefetch'>
           <p class='py-2 relative h-fit before:absolute before:bottom-0 before:w-full before:border-yellow-600 before:border-[1px] before:translate-y-1 before:scale-x-0 hover:before:scale-x-100 before:transform before:duration-500 before:transition-transform'>
             {obj.text}
           </p>
