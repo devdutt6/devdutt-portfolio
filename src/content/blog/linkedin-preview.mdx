@@ -1,0 +1,61 @@
+---
+title: Image not previewed | Linkedin
+og_title: Image not previewed | Linkedin
+og_description: On linkedin the OG image was not getting previewed even if it was getting previewed on every other social-media platform.
+og_image: https://kinsta.com/wp-content/uploads/2020/12/pasted-image-0-17.png
+og_type: article
+og_author: devdutt chudasama
+og_publishedOn: '2024-04-22'
+tags:
+  - linkedin
+  - metadata
+  - open-graph
+  - open-graph tags
+  - og
+  - ogData
+  - ogImage
+---
+
+# OGImage was not getting previewd on Linkedin
+
+![Linkedin post inspector](https://kinsta.com/wp-content/uploads/2020/12/pasted-image-0-17.png)
+
+The issue was when I share the postlink of our website to the social media platforms then all the other platforms were able to get the **OG details** and they were able to show the **preview with the image**, but on the linkedin the image was not getting previewed.
+
+---
+
+## So begin the hunt
+
+### 1st Try
+
+So we went on the stackoverflow and search if anyone faced the same issue, and we found many faced the issue that their image was not getting refreshed after they have changed the image link in OG details.
+
+The suggested solution to it was to go to the [post-inspector](https://www.linkedin.com/post-inspector/) and paste the link of which you want to update the OG Details. After doing that the OG details should be getting updated on linkedin.
+
+But we found that our image was not getting fetched even on the post-inspector.
+
+### 2nd Try
+
+Now again we started to look for other possible solutions and we found out that we need to check if our image link is **previewable in the browser** or not and it was not and it was **downloaded directly** when we paste the link in the browser.
+
+Then we looked for how to solve this, (context:) Now we were using S3 to store the uploaded files and using the **S3 links** in ogimage tag. To solve this issue of not previewable S3 links was happening because at the time of uploading the image we were not giving the mimetype in the request to S3 so S3 was setting the default mimetype of **octant-stream**, and when we were requesting that resource it was responding with same mimetype and browser didnt knew how to handle the received data cause of mimetype **octant-stream** and it was downloading file as it is.
+
+This we solved it by providing the uploaded files mimetype, and the link was previewable now. But still it was not getting previewed on the linkedin.
+
+### Finally
+
+Now we went deep and checked what was happening we checked the api which was used by linkedin to get the OG data of the pasted url in the post.
+![Failing api](https://cdn.discordapp.com/attachments/1065133521166942320/1233718042358190080/image.png?ex=662e1cf6&is=662ccb76&hm=d8dd8843c881af96a5ce93333bd1c7e89f8066ee846800a5f04e316c1ff9a997&) The api was failing with the _status 400_. Then we checked same api with the post of which the **OGimage was not accessible**, but to our surprise the api responded with _status 200_ **even if the actual OG image was not accessible**.
+So we found out that the api was failing with our link was because our image link looked something like
+`https://ntwc-us-east-2-lab-eks-s3-files-storage.s3.us-east-2.amazonaws.com/user-63bec5cef1d42d0011a406fb//file_1713867627817_m2.png`.
+
+Can you spot the issue?
+
+The issue was that there was **2 slashes** in the url, the URL it self is accesible but the URL format is not conventional so the **voyager**
+api was failing with _400_. So we changed the pathing in S3 and placed that URL in OG image and BOOM the image was finally previewable in Linkedin.
+
+---
+
+## Moral of the story
+
+This issue took way more time than we thought it would take, we actually dropped the issue and moved ahead but we we decided to take it again and solve it anyhow. We thought if people can make it so why cant we and kept looking for the solution. The issue was actually silly if you think who puts the two slashes in the URL tho it is accessible but it is unconventinal.
