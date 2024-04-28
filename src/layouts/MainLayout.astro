@@ -24,6 +24,7 @@ const {
   ogPublishedOn = '',
   ogImage = 'https://devdutt-portfolio.vercel.app/open/pc.png',
 } = Astro.props;
+const ogUrl = Astro.url;
 ---
 
 <!doctype html>
@@ -33,11 +34,14 @@ const {
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>{pageTitle}</title>
     <meta name='description' content={pageDescription} />
+    <link rel='canonical' href={ogUrl} />
     <meta name='keywords' content={keywords.join(', ')} />
 
     <meta property='og:title' content={ogTitle} />
-    <meta property='og:image' content={ogImage} />
     <meta property='og:description' content={ogDescription} />
+    <meta property='og:image' content={ogImage} />
+    <meta property='og:url' content={ogUrl} />
+    <meta property='twitter:creator' content='@devdutt_sinh' />
     <meta property='twitter:card' content='summary_large_image' />
     {
       article && (
