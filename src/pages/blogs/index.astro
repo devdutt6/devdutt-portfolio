@@ -1,14 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
-import BlogCard from './_components/_blogCard.astro';
+import Layout from '../../layouts/MainLayout.astro';
 import FixedHeight from '../_components/_fixedHeight.astro';
 import PageHeader from '../_components/_pageTitle.astro';
-import Layout from '../../layouts/MainLayout.astro';
+import BlogCard from './_components/_blogCard.astro';
 
 const blogPosts = await getCollection('blog');
-const title = 'Blogs by Devdutt';
+const title = 'Blogs | Devduttsinh';
 const description =
-  'The collection of blogs, learnings, insightful things documented and posted by devdutt chudasama';
+  'The collection of blogs, learnings, insightful things documented and posted by devduttsinh chudasama';
+const keywords = [
+  'devduttsinh',
+  'devdutt',
+  'blogs',
+  'software',
+  'coding',
+  'development',
+  'chudasama',
+  'devduttsinh blogs',
+];
 ---
 
 <Layout
@@ -16,6 +26,7 @@ const description =
   pageDescription={description}
   ogTitle={title}
   ogDescription={description}
+  keywords={keywords}
 >
   <FixedHeight color='bg-neutral-900' />
 

@@ -1,14 +1,24 @@
 ---
 import { getCollection } from 'astro:content';
+import Layout from '../../layouts/MainLayout.astro';
 import FixedHeight from '../_components/_fixedHeight.astro';
 import PageHeader from '../_components/_pageTitle.astro';
 import ProjectCard from './_components/_projectCard.astro';
-import Layout from '../../layouts/MainLayout.astro';
 
 const projects = await getCollection('projects');
-const title = 'Projects | Devdutt';
+const title = 'Projects | Devduttsinh';
 const description =
-  "Browse through Devdutt Chudasama's portfolio showcasing web development projects, applications, and software solutions. Get inspired and see what I can create for you.";
+  "Browse through Devduttsinh Chudasama's portfolio showcasing web development projects, applications, and software solutions. Get inspired and see what I can create for you.";
+const keywords = [
+  'devduttsinh',
+  'devdutt',
+  'chudasama',
+  'devdutt projects',
+  'projects',
+  'software',
+  'development',
+  'expereince',
+];
 ---
 
 <Layout
@@ -16,6 +26,7 @@ const description =
   pageDescription={description}
   ogTitle={title}
   ogDescription={description}
+  keywords={keywords}
 >
   <FixedHeight color='bg-neutral-900' />
 

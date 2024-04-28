@@ -1,8 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import FixedHeight from '../../_components/_fixedHeight.astro';
 import MainLayout from '../../../layouts/MainLayout.astro';
 import ProseLayout from '../../../layouts/ProseLayout.astro';
+import FixedHeight from '../../_components/_fixedHeight.astro';
 
 interface Props {
   data: CollectionEntry<'projects'>['data'];
@@ -16,6 +16,7 @@ const { content, data } = Astro.props;
   pageDescription={data.shortSummary}
   ogTitle={data.projectName}
   ogDescription={data.shortSummary}
+  keywords={data.keywords || []}
 >
   <FixedHeight color='bg-neutral-900' />
 

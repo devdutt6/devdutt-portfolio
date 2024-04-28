@@ -31,6 +31,7 @@ const blogCollection = defineCollection({
         new Date(date).toLocaleDateString(dateFormat, dateConfig)
       ),
     tags: z.array(z.string()).optional(),
+    keywords: z.array(z.string()).optional(),
   }),
 });
 
@@ -47,6 +48,7 @@ const projectsCollection = defineCollection({
     liveWebsiteLink: z.string().optional(),
     shortSummary: z.string(),
     orderNumber: z.number().default(100),
+    keywords: z.array(z.string()).optional(),
   }),
 });
 export const collections = {

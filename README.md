@@ -1,8 +1,8 @@
 # My Portfolio Website
 
-The project is my [Portfolio Website](https://devdutt-portfolio.vercel.app/). Hi I am Chudasama Devdutt a Software Developer, and welcome to my portfolio website project.
+The project is my [Portfolio Website](https://devdutt-portfolio.vercel.app/). Hi I am Devduttsinh Chudasama a Software Developer, and welcome to my portfolio website project.
 
-The [blog](https://devdutt-portfolio.vercel.app/blogs) route in this website is where I decided to document and share anything new that I learn on the daily bases. So there will be one blog every 2-3 days I guess. Also I will be adding some more sub projects in this project only as Astro supports other frontend frameworks with its Island architecture.
+The [blog](https://devdutt-portfolio.vercel.app/blogs) route in this website is where I decided to document and share anything new that I learn on the daily bases. So there will be one blog every 2-3 days I guess. Also I will be adding some more sub projects in this project, as Astro supports other frontend frameworks with its Island architecture it should be easier todo so.
 
 ## Here are some preview images
 

@@ -1,13 +1,20 @@
 ---
+import Layout from '../../layouts/MainLayout.astro';
 import FixedHeight from '../_components/_fixedHeight.astro';
 import PageHeader from '../_components/_pageTitle.astro';
-import Sidebar from './_components/_sidebar.astro';
 import MainSection from './_components/_mainSection.astro';
-import Layout from '../../layouts/MainLayout.astro';
+import Sidebar from './_components/_sidebar.astro';
 
-const title = 'About Devdutt';
+const title = 'About | Devduttsinh Chudasama';
 const description =
-  'Learn more about Devdutt Chudasama, a passionate software developer based in Gujarat, India. Discover my skills, experience, and interests in web development and problem-solving.';
+  'Learn more about Devduttsinh Chudasama, a passionate software developer based in Gujarat, India. Discover my skills, experience, and interests in web development and problem-solving.';
+const keywords = [
+  'devduttsinh',
+  'devdutt',
+  'chudasama',
+  'about devdutt',
+  'about devduttsinh',
+];
 ---
 
 <Layout
@@ -15,6 +22,7 @@ const description =
   pageDescription={description}
   ogTitle={title}
   ogDescription={description}
+  keywords={keywords}
 >
   <FixedHeight color='bg-neutral-900' />
   <div class='bg-neutral-900'>

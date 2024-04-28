@@ -2,6 +2,7 @@
 import Layout from '../layouts/MainLayout.astro';
 const title = 'Not Found 404 Page';
 const description = 'The page for catch all route if not handled in routing';
+const keywords = ['devduttsinh 404'];
 ---
 
 <Layout
@@ -9,6 +10,7 @@ const description = 'The page for catch all route if not handled in routing';
   pageDescription={description}
   ogTitle={title}
   ogDescription={description}
+  keywords={keywords}
 >
   <div
     class='h-[80vh] flex flex-col justify-center items-center bg-neutral-900 select-none relative'
