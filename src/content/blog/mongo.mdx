@@ -1,0 +1,75 @@
+---
+title: Mongo Things
+og_title: Mongo Sharding
+# TODO change descriptiona and image
+og_description: Mongo sharding etc
+og_image: https://rxjs.dev/generated/images/marketing/home/Rx_Logo-512-512.png
+og_type: article
+og_author: devduttsinh chudasama
+og_publishedOn: '2024-05-29'
+tags:
+  - mongo
+isDraft: true
+---
+
+# Mongo Things
+
+## Sharding
+
+When your application receiving high rates of queries throughput or you are handling a large chunk of data which could be larger than the memory RAM itself then you have to think about scaling.
+Basically there are two type of scaling
+
+- vertical
+- horizontal
+
+#### Vertical Scaling
+
+Means increasing the Memory, bandwidth of a single server. But it comes with cost and there is a practical maximum due to the hardware dependency.
+
+#### Horizontal Scaling
+
+Distributing the load over multiple machine is horizontal scaling but it comes with the complexity of managing multiple servers.
+
+#### Now only listing terms and things to remember
+
+- Replication
+
+  - components: primary, secondary, arbitrar, voting
+  - how mongo creates replicas and replicates the data on replica sets (`oplog`)
+  - whys of replication (durability, availability, recovery, edging)
+  - read about "`{`'w' 'majority' `}`"
+
+- Sharding
+  - what is sharding, collection level
+  - why sharding
+  - components(shard(as a replica), mongos, config server)
+  - role of shardKey vs indexKey
+  - how to create one shardKey
+  - sharding strategies(hashed, ranged, zoned)
+
+#### Capped Collections
+
+Cap some collection to store limited number of documents.You can also specify maxSize of document in collection.
+
+#### $bucket operator in aggregation
+
+```mql
+{
+  $bucket: {
+    groupBy: <expression>,
+    boundaries: [<boundary1>, ... ],
+    default: <defaultBoundary>,
+    output: {
+      <field> : { <accumulator>: <expression> }
+    }
+  }
+}
+```
+
+#### Transactions in mongo
+
+1. startSession
+2. startTransaction
+3. {operations}
+4. commitTransaction or abortTransaction
+5. endSession

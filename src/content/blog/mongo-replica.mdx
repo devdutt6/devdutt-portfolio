@@ -1,0 +1,48 @@
+---
+title: Mongo Replication
+og_title: Mongo Replication
+# TODO change descriptiona and image
+og_description: Mongo replcias etc
+og_image: https://rxjs.dev/generated/images/marketing/home/Rx_Logo-512-512.png
+og_type: article
+og_author: devduttsinh chudasama
+og_publishedOn: '2024-05-29'
+tags:
+  - mongo
+isDraft: true
+---
+
+# Replication
+
+Checkout the config file for mongod in path `/etc/mongod.conf` in linux find your own config file according ti your os.
+find for rule `storage:` and check `dbPath` field it will have value `/var/lib/mongo` if in linux or other according to your os.
+Go in that folder create three new folders for a new replica set named `store1`, `store2` and `store3`.
+
+### step OPEN:
+
+Open new terminal.
+
+### step START-SERVER
+
+run command `mongod --port {2701{*>7}} --dbPath {PathToAnyoneFileFrom3WeCreated} --replSet {ReplicaSetId}` in that new terminal.
+
+Repeat [OPEN](#step-open) and [START-SERVER](#step-start-server) three times with increasing port by one and using a new folder path of which we created.
+
+In terminal connect to mongo service and run command
+
+```mql
+rs.initiate({
+  _id: "<ReplicaSetId>",
+  members: [
+    { _id: "<uniqueIdInReplicaSet>", host: "hostWithPortToNode" },
+    { _id: "<uniqueIdInReplicaSet>", host: "hostWithPortToNode" },
+    { _id: "<uniqueIdInReplicaSet>", host: "hostWithPortToNode" },
+  ]
+})
+```
+
+To check replica state and its details about service use command `rs.status()`.
+You can see which node is primary and which is secondary.
+
+By default Secondary nodes do not have permission to either read or write permissions.
+To allow secondary read connect to secondary after checking which node are secondary and run command `db.getMongo().setSecondaryOk()` and `db.getMongo().setSlaveOk()`.
