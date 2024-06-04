@@ -1,0 +1,114 @@
+---
+title: Cache in browser
+og_title: Cache in browser
+# TODO change descriptiona and image
+og_description: How to use cache in browser and service workers
+og_image: https://rxjs.dev/generated/images/marketing/home/Rx_Logo-512-512.png
+og_type: article
+og_author: devduttsinh chudasama
+og_publishedOn: '2024-06-02'
+tags:
+  - cache
+  - browser
+  - browser cache
+  - service worker
+  - pwa
+isDraft: true
+---
+
+# Caches
+
+Browser exposes one keyword named `caches` which we can use to interact with browser cache. Cache stores/caches the Network Request and Response. It stores it like we store something in object in javascript or dictionary in python or hashmap in cpp where request is key and response is the value.
+
+Now we will go through some examples cause then it will be easier to understand and for me to explain.
+
+## Opening a cache
+
+The open method returns a promise which returns a cache Object. Consider Object as a storage with label name attached to it. And if the cache Object with the same name exists then it returns that.
+
+```js
+const ImageCache = await caches.open('ImageCache');
+```
+
+## Storing in and fetching from cache
+
+Cache actually stores the network request as a key and its value is the response of the that request.
+
+```js
+const ImageCache = await caches.open('ImageCache');
+// creating diff type of requests which we can use in fetch
+const url = '/image.png'; // only string
+const url2 = new URL('/image2.png'); // URL instance
+const url3 = new Request('/image3.png', {
+  headers: {
+    'X-Header-Name': 'Value',
+  },
+  method: 'GET',
+}); // Request Instance
+
+// -------------------------ways to add into the cache-------------------
+// below line will call fetch on the single request passed and will store the response in cache
+ImageCache.add(url);
+// below line will call fetch on all the requests passed and will store the response in cache
+ImageCache.addAll([url2, url3]);
+// there is also another method called put but in that you pass 2 argument request and response which is key and value for cache
+const request = '/image4.png';
+const imageResponse = await fetch(request);
+// if you want to use the pass the response to the user further then please call the clone method on response because you cant use the the response object to store in cache and send to user we need to clone it.
+ImageCache.put(request, imageResponse); //  || imageResponse.clone()
+
+// ---------------------------ways to get from the cache--------------------
+// below method returns all the requests that are stored in cache
+const requests = await ImageCache.keys();
+
+// we are iterating over the returned values which are responses
+requests.map(async (ele) => {
+  // we has access to all the methods which comes with Response Object like json, blob, arrayBuffer, etc..
+  let blob = await ele.blob();
+  let url = URL.createObjectURL(blob);
+  console.log(url);
+});
+
+// we can also search for the particular request if that exists on particular cacheObject
+
+// below function will result to the response of the request if it exists on cache or it will return undefined
+const imageResponseCached = await ImageCache.match(request);
+// we also have the matchAll method on which we have options which we can pass and get the appropriate list of responses if they are stored in cache.
+const imagesCached = await ImageCache.matchAll(request, {
+  ignoreMethod: false, // ignores the methods GET, POST, PUT
+  ignoreSearch: false, // ignores the query params passed
+  ignoreVary: false, // ignores the headers variation
+});
+// by ignore it means they will fetch the responses if they only differ in method, search and headers are different
+
+// ---------------to delete some entry from cache-------------------
+// it returns the boolean value weather it was successful in deleting the entry or not
+const boole = await ImageCache.delete('/image.png');
+```
+
+## Methods on caches
+
+Now as shown we can find the object in particular cacheObject but what if we want to search it globally through all the cache Objects. Then we have methods on caches.
+
+```js
+// below method returns all the requests that are stored in global cache throughout all cache stores/objects
+const requests = await caches.keys();
+
+requests.map(async (ele) => {
+  let blob = await ele.blob(); // using blob as we only have stored the images
+  let url = URL.createObjectURL(blob);
+  console.log(url);
+});
+
+const images = await caches.matchAll(request, {
+  cacheName: 'imageCache', // cache store name
+  ignoreMethod: false, // ignores the methods GET, POST, PUT
+  ignoreSearch: false, // ignores the query params passed
+  ignoreVary: false, // ignores the headers variation
+});
+
+const bool = await caches.delete('/image.png'); // returns true or false
+
+// we can also check if the cache with the store name already exists in caches or not with has method
+const boole = await caches.has('imageCache'); // returns true or false
+```
