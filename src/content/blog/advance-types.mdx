@@ -1,0 +1,129 @@
+---
+title: Advance types JS
+og_title: Advance types JS
+og_description: We all know about the simple data types like number, strign, boolean, object in javascript but we also have few advance datatypes like Buffers, ArrayBuffers, DataView, Blob.
+og_image: https://devdutt-portfolio.vercel.app/open/types.png
+og_type: article
+og_author: devduttsinh chudasama
+og_publishedOn: '2024-05-29'
+tags:
+  - Types
+  - JS
+---
+
+![representation of type](/open/types.png)
+
+# Advance types in JS
+
+I am was caught by a surprise when I got to know that every time an API responds to any request the response can be considered as file. Think of file as a set of binary data with metadata about its content of it, like what is the type of content which is present in file so that we can parse it with appropriate parser and can make sense of it.
+
+## Request and Response Interface
+
+Before moving further we need to go though this as it will help understanding further concepts.
+
+To fetch anything or to deliver it over the internet we connect to that URL and exchange some information and server performs some action and returns a response. We Javascript developers do that generally with fetch.
+And fetch handles that with `Request` and `Response` object.
+
+```js
+// requesting movies from URL
+let request = new Request('https://somedb.com/movies', {
+  method: 'GET|POST|HEAD|PUT...',
+  body: 'body';
+  headers: {
+    'X-header-name': 'value'
+  },
+});
+
+let response = await fetch(request); // returns response of type Response
+```
+
+The above request responds with a response which is of type `Response`. This response will have its corresponding headers which have the data about the content of the response such as `Content-Type`, `Content-Length`, and much more. This information we can use to parse the content and then we can perform desired action on that data. The response object also comes with some basic methods like `text()`, `json()`, `blob()`, `arrayBuffers()` which we can use to parse the data according to their contents.
+
+I just wanted to make you aware about the arrayBuffer method ;D which is available on response object.
+
+## Frequently Used
+
+### Blob
+
+Blob stands for **Binary Large Object** which most people does not even know but works with it on the daily bases specially if they are on the frontend side. We just take it for granted.
+
+To understand blob we have to understand the `Response` interface. Think of a instance where you are getting a file in response and that file has mimetype of `image/png` then in frontend when handling that response first we will call the blob method on it `response.blob()`, blob method actually reads through the completion and returns the Blob.
+From which we can create the `URLObject` with `URL.createObjectURL(await response.blob())` and then we can use this to render the content as image.
+
+```js
+let imageElement = document.querySelector('img');
+// preparing Request object with mode and credentials in header
+// so that we can inform browser that allow it and send no cookies or anything
+let request = new Request(
+  'https://unsplash.com/photos/a-man-and-a-child-holding-hands-over-an-open-book-7yJJs4ehCoM',
+  {
+    headers: {
+      mode: 'cors',
+      credentials: 'no',
+    },
+  }
+);
+
+fetch(request)
+  .then((response) => response.blob())
+  .then((blob) => {
+    const objectURL = URL.createObjectURL(blob);
+    imageElement.src = objectURL;
+  });
+```
+
+### File
+
+File is another less known datatype. File can be anything, by that I mean anything can be a content of a file, its just a wrapper on data with its name, size, mimetype, lastModifiedDate(used for caching).
+
+```js
+// random object
+let person = {
+  name: 'devdutt',
+  age: 21,
+  skills: ['JS/TS', 'MongoDB'],
+};
+// preparing body
+let body = { person };
+// stringify-ing cause we need to pass it to the file
+// then whenever we need it we can parse and use it again
+body = JSON.stringify(body);
+console.log('content: ', body); // PIN
+// new File([Buffer|Blob|ArrayBuffer|FileReader], filename, options)
+let file = new File([body], 'data.json', { type: 'application/json' });
+
+console.log('name', file.name); // data.json
+console.log('size', file.size); // file size in bytes
+console.log('type', file.type); // the passed type in options
+getBuffer(file); // [123, 34, .....] buffer 8 Bit representation of string PIN-ned above
+
+async function getBuffer(file) {
+  try {
+    let v = await file.arrayBuffer();
+    console.log('file buffer received', v);
+  } catch (err) {
+    console.log('failed to read file buffer');
+  }
+}
+```
+
+## Advance Types
+
+### ArrayBuffer, DataView, TypedArray
+
+ArrayBuffer is read-only so we cannot manipulate it. To manipulate it we have to use the DataView which makes the array buffer modifiable.
+
+We can use response object to generate or we can create one instance with providing length in bytes.
+
+```js
+let arrBuff = new ArrayBuffer(12); // init array buffer
+let dv = new DataView(arrBuff); // make it editable
+let arr = [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 33];
+for (let i = 0; i < arrBuff.byteLength; i++) {
+  dv.setUint8(i, arr[i]); // edit it
+}
+
+// this is not my code XD
+// I was forced to google how to convert a array buffer to a string XD
+console.log(String.fromCharCode.apply(null, new Uint8Array(arrBuff))); // create a string out of buffer and print it
+```

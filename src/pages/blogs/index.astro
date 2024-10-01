@@ -5,7 +5,7 @@ import FixedHeight from '../_components/_fixedHeight.astro';
 import PageHeader from '../_components/_pageTitle.astro';
 import BlogCard from './_components/_blogCard.astro';
 
-const blogPosts = await getCollection('blog');
+const blogPosts = await getCollection('blog', ({ data }) => !data.isDraft);
 const title = 'Blogs | Devduttsinh';
 const description =
   'The collection of blogs, learnings, insightful things documented and posted by devduttsinh chudasama';
@@ -31,7 +31,7 @@ const keywords = [
   <FixedHeight color='bg-neutral-900' />
 
   <div class='bg-neutral-900'>
-    <div class='max-w-3xl px-4 mx-auto space-y-6'>
+    <div class='max-w-3xl px-4 mx-auto space-y-6 py-2'>
       <PageHeader text='Bl0GS' />
       <main class='container space-y-4 mx-auto'>
         {blogPosts.map((post) => <BlogCard post={post} />)}

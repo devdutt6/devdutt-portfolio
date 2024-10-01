@@ -1,0 +1,305 @@
+---
+title: Basics of SCSS
+og_title: Basics of SCSS
+og_description: SCSS also called as Sassy CSS. Is a Super set of CSS. It provides additional features on top of CSS which CSS does not come with. It has many interesting features/concepts like mixins, nesting etc.
+og_image: https://devdutt-portfolio.vercel.app/open/scss.png
+og_type: article
+og_author: devduttsinh chudasama
+og_publishedOn: '2024-05-29'
+tags:
+  - SCSS
+  - SASS
+  - CSS
+---
+
+![SASS logo](/open/scss.png)
+
+# SCSS (called sassy CSS)
+
+SCSS is basically batteries included CSS.
+
+Every valid CSS is valids SCSS but can't be true otherwise.
+Browsers can't understand SCSS so we have to compile it to CSS before deploying the projects, for which we use compilers.
+In new Frameworks we don't have to configure SCSS and its compiler manually but have to if we are not using one.
+
+## Links
+
+- [$variable](#variable)
+- [$map](#map)
+- [Nesting](#nesting)
+- [Partial](#partials)
+- [@function](#function)
+- [@mixin](#mixin)
+- [@extend](#extend)
+- Other: (math operations, expressions)
+- [Link to documentation](https://sass-lang.com/documentation/)
+
+## $variable
+
+Variable is defined with `$` symbol followed by variable name eg. `$color` and then can use the variable as value eg.
+
+```scss
+$color: '#272727';
+.main {
+  background-color: $color;
+}
+```
+
+above code will get complied into css like
+
+```css
+.main {
+  background-color: '#272727';
+}
+```
+
+## $map
+
+Map is kind of object in javascript and dictionary in python. Map is also defined like variable with prefix `$`.
+We can use it like as example shown below.
+
+```scss
+$colors: (
+  'red': '#FF0000',
+  'blue': '#0000FF',
+  'green': '#00FF00',
+);
+.main {
+  color: map-get($colors, 'red');
+}
+```
+
+above code will be transpiled to
+
+```css
+.main {
+  color: #ff0000;
+}
+```
+
+## Nesting
+
+We will better understand nesting with example
+
+```scss
+.main {
+  p {
+    /* targets <p> which  are child of .main */
+    color: 'red';
+  }
+
+  &_paragraph {
+    // .main_paragraph
+    padding: 2px 8px;
+  }
+
+  #{&}_para {
+    // .main .main_paragraph
+    color: 'blue';
+  }
+}
+```
+
+above code will be transpiled to css like
+
+```css
+.main p {
+  /* look how <p> tag is autmatically targeted with child specificity of main in CSS */
+  color: 'red';
+}
+
+.main_paragraph {
+  /* here '&' got replaced with its parent element name */
+  padding: 2px 8px;
+}
+
+.main .main_para {
+  /* #{&} it is like expression which signifies recursive parent tree element specification  */
+  color: 'blue';
+}
+```
+
+## Partials
+
+Partials are files prefixed with `_` and with extension `.scss` these files do not get complied to css directly but the content of the files get transpiled and will be included in the files which imports specific partial files.
+
+**\_reset.scss**
+
+```scss
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  a {
+    text-decoration: none;
+  }
+}
+```
+
+Like above are the content of the file named `_reset.scss`. Now we import this partial file in `main.scss` file.
+
+```scss
+@import 'reset'; /* look how we are not adding _ while importing */
+.main {
+  border: 2px black solid;
+}
+```
+
+Now above `main.scss` file will be transpiled to
+
+```css
+/* the contents of the partial files are compiled and added in the main file */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+* a {
+  text-decoration: none;
+}
+
+.main {
+  border: 2px black solid;
+}
+```
+
+## @function
+
+We can also write functions in SCSS which returns some value.
+
+```scss
+$colors: (
+  'red': '#FF0000',
+  'blue': '#0000FF',
+  'green': '#00FF00',
+);
+
+@function colorIt($color_name) {
+  @return map-get($colors, $color_name);
+}
+
+.main {
+  color: colorIt('red');
+}
+```
+
+it will get complied to
+
+```css
+.main {
+  color: '#FF0000';
+}
+```
+
+## @mixin
+
+Mixins are like function which can take arguments but it does not return some value but it returns compiled styles it self. Also you have to include mixin.
+
+```scss
+@mixin flexCenterWithDirection($direction: 'row') {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+.main {
+  @include flexCenterWithDirection('column');
+}
+```
+
+Above code will be transpiled to
+
+```css
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+```
+
+Basic rule for how to choose between functiona and mixin is when you want to get some value use function and when
+you want to return style use mixin.
+
+## @extend
+
+We can extend any css code block and overwrite the stylings defined in it. It increases code reusability.
+
+```scss
+.main {
+  &_para {
+    color: white;
+    background: black;
+    &:hover {
+      color: red;
+    }
+  }
+
+  &_para2 {
+    @extend .main_para; /* we are adding .main as & will be compiled to .main */
+    &:hover {
+      color: blue;
+    }
+  }
+}
+```
+
+Above File will be transpiled to
+
+```css
+.main_para,
+.main_para2 {
+  color: white;
+  background: black;
+}
+.main_para:hover,
+.main_para2:hover {
+  color: red;
+}
+.main_para2:hover {
+  color: blue;
+}
+```
+
+## other extra bit of info
+
+### math operation
+
+`width: calc(80%-40%);` in css can be written as `width: 80%-40%;` in scss. But this is only valid if the units are same otherwise it wont work and we will have to fallback to `calc()`.
+
+### @if @else
+
+We can also use if else expression in scss checkout [docs](https://sass-lang.com/documentation) for more.
+
+## Bonus Example
+
+```scss
+@mixin mobile($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+.main {
+  width: 42rem;
+  @include mobile(800px) {
+    /* all the styles defined here will be returned if the @media is satisfied */
+    /* as the @content returns it */
+    width: 15rem;
+  }
+}
+```
+
+It will be compiled to
+
+```css
+.main {
+  width: 42rem;
+}
+@media (max-width: 800px) {
+  .main {
+    /* all the styles defined here will be returned if the @media is satisfied */
+    /* as the @content returns it */
+    width: 15rem;
+  }
+}
+```

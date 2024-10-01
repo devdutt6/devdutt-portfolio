@@ -1,0 +1,120 @@
+---
+title: Intro to RabbitMQ
+og_title: Intro to RabbitMQ
+og_description: RabbitMQ is a message broker implemented on Advance Message Queuing Protocol(AMQP). It has support for Pub/Sub architecture with concepts like routing, filtering, streaming.
+og_image: https://devdutt-portfolio.vercel.app/open/rabbitmq.png
+og_type: article
+og_author: devduttsinh chudasama
+og_publishedOn: '2024-05-29'
+tags:
+  - rabbitMQ
+---
+
+![RabbitMQ logo](/open/rabbitmq.png)
+
+# RabbitMQ
+
+RabbitMQ stands for Rabbit Message Queueing.
+RabbitMQ is a reliable and mature messaging and streaming broker, which is **easy to deploy** on cloud environments, on-premises, and on your local machine
+There are multiple client libraries available, which can be used with your programming language of choice, just pick one. **No vendor lock-in!**
+It has support for Routing, filtering, streaming, federation, and so on with plugins.
+
+Here is the basic example of implementing message sending and receiving with rabbitMQ on AMQP protocol .
+
+#### send.js
+
+```js
+// connect to service
+amqp.connect('amqp://localhost', function (error0, connection) {
+  if (error0) throw error0;
+  // then create channel
+  connection.createChannel(function (error1, channel) {
+    if (error1) throw error1;
+
+    var queue = 'hello';
+    var msg = 'Hello world';
+
+    // then create queue / assert a queue into existance
+    channel.assertQueue(queue, { durable: false });
+    // send message to queue
+    channel.sendToQueue(queue, Buffer.from(msg));
+    // log confirmation of sent
+    console.log(` [x] Sent ${msg}`);
+  });
+  // close the connection
+  setTimeout(function () {
+    connection.close();
+    process.exit(0);
+  }, 500);
+});
+```
+
+#### receive.js
+
+```js
+// connect to service
+amqp.connect('amqp://localhost', function (error0, connection) {
+  if (error0) throw error0;
+  // create a channel
+  connection.createChannel(function (error1, channel) {
+    if (error1) throw error1;
+
+    var queue = 'hello';
+    // listen to the same queue to which we sent
+    channel.assertQueue(queue, { durable: false });
+
+    console.log(` [*] Waiting for messages in ${queue}. To exit press CTRL+C`);
+    // pass a callback to run on evey message on that queue
+    channel.consume(
+      queue,
+      function (msg) {
+        console.log(' [x] Received %s', msg.content.toString());
+      },
+      { noAck: true }
+    );
+  });
+});
+```
+
+Now above was basic example of a simple hello world!
+
+## extras
+
+### Work Queues
+
+A Work Queue will be used to distribute time-consuming tasks among multiple workers.
+The main idea behind Work Queues (aka: Task Queues) is to avoid doing a resource-intensive task immediately and having to wait for it to complete. Instead we schedule the task to be done later. We encapsulate a task as a message and send it to a queue. A worker process running in the background will pop the tasks and eventually execute the job. When you run many workers the tasks will be shared between them.
+
+#### Round-robin dispatching
+
+By default if we have created a queue and created two workers for the tasks to distribute then the tasks will be distributed to workers in RR method.
+Rabbit will do it no matter if the tasks takes longer or shorted once the task is assiged to a worker it will remain in queue even if other worker is idel.
+To avoid that we use prefetch for fair load distribution.
+
+#### Message durability
+
+Once if the task is assigned the worker and it the worker get disconnected or exists the process somehow then all the assigned tasks will be lost if not marked durable before hand.
+But if marked then tasks will move back to other worker if there is one or will remain in the queue for maxTimeAlive config setting.
+
+### Publisher / Subscriber
+
+The consumer only will listen to the specific events and will only get the events related to that events that is managed make sure by Exchanges.
+
+#### Exchanges
+
+the producer can only send messages to an exchange. An exchange is a very simple thing. On one side it receives messages from producers and the other side it pushes them to queues. The exchange must know exactly what to do with a message it receives. Should it be appended to a particular queue? Should it be appended to many queues? Or should it get discarded. The rules for that are defined by the exchange type.
+There are a few exchange types available: _direct_, _topic_, _headers_ and _fanout_.
+
+##### Bindings
+
+The relationship between exchange and a queue is called a binding.
+Binding defines how the exchange will broadcast or send the event to consumer/queues.
+
+#### Temporary queues
+
+temporary queus are queues whos lifetime is lifetime of the consumer for which the queue was created.
+whenever we connect to Rabbit we need a fresh, empty queue. To do this we could create a queue with a random name, or, even better - let the server choose a random queue name for us.
+Secondly, once we disconnect the consumer the queue should be automatically deleted.
+That is temporary queue.
+
+And using above defined entities we can perform routing, receive specified topics, or using patterns of topics.
