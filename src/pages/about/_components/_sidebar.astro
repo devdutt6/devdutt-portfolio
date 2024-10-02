@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import LinkButton from './_linkButton.astro';
 ---
 
@@ -13,10 +14,9 @@ import LinkButton from './_linkButton.astro';
     </h2>
     <p class='text-white/70 text-sm leading-5 tracking-wide'>
       Hello! I'm Devduttsinh Chudasama, a passionate software developer based in
-      Gujarat, India, specializing in MERN stack web development and daily
-      problem-solving in data structures and algorithms (DSA). I thrive on
-      tackling challenging tasks and am always eager to expand my skill set. My
-      USP would be I learn things quickly.
+      Gujarat, India. I thrive on tackling challenging tasks and am always eager
+      to expand my skill set. My USP would be I learn things quickly and not
+      limited to any technology stack.
     </p>
 
     <div class='flex items-center flex-wrap justify-end gap-2 pt-4'>
@@ -27,6 +27,24 @@ import LinkButton from './_linkButton.astro';
       />
       <LinkButton text='Skills' link='/skills' />
       <LinkButton text='Projects' link='/projects' />
+      <div
+        class='ring-1 ring-neutral-600 rounded-lg cursor-pointer group/name hover:-translate-y-1 tracking-wide shadow-sm shadow-slate-500 hover:shadow-md transition-shadow'
+      >
+        <a
+          href='https://drive.google.com/uc?export=download&id=1RII6llNMbBZHIuWp53GU3M6SWnoeEgSO'
+          class='flex text-sm py-2 px-2 font-semibold'
+          target='_blank'
+        >
+          Resume&nbsp;
+          <Image
+            src='/openLink.svg'
+            class='inline-block group-hover/name:scale-150 transition-transform'
+            width={18}
+            height={18}
+            alt='open link icon'
+          />
+        </a>
+      </div>
     </div>
   </section>
   <section
